@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # #######################################################
-# @Author: Fábio Luciano				#
-# @Email pessoal: omega.df@gmail.com			#
-# @Date: 03/09/2012  16:54:00 PM 			#
+# @Author: Fábio Luciano								#
+# @Email pessoal: omega.df@gmail.com 					#
+# @Date: 03/09/2012  16:54:00 PM 						#
 # @Description: Script criado com o intuito de criar 	#
-# o perfeito desktop para desenvolvimento		#
+# o perfeito desktop para desenvolvimento				#
 # #######################################################
 
 # Usuário a qual ficará responsável por alguns diretórios
@@ -41,7 +41,7 @@ repos_ppa=(
 	["xorg-edgers"]="xorg-edgers/ppa"
 	["yorba"]="yorba/ppa" #shotwell
 	["php54"]="ondrej/php5" #php5.4
-	["marlin"]="marlin-devs/marlin-daily"
+	["marlin"]="marlin-devs/marlin-daily" #marlin
 )
 
 # Repositórios fora do ppa
@@ -140,7 +140,7 @@ clean_packages () {
 
 do_fixes() {
 	# Por algum motivo o bash_history fica com o root como dono
-	chown fabioluciano:fabioluciano ~/.bash_history
+	chown $usuario:$usuario ~/.bash_history
 
 	# Depois de adicionado o pacote, ativar o teclado numérico
 	numlockx on
@@ -152,13 +152,9 @@ do_fixes() {
 	sensors-detect
 }
 
-create_autostarts {
-	echo ''
-}
-
-add_pathogem() {
-	mkdir -p /home/fabioluciano/.vim/autoload /home/fabioluciano/.vim/bundle; \
-	curl -Sso /home/fabioluciano/.vim/autoload/pathogen.vim \
+add_pathogen() {
+	mkdir -p /home/$usuario/.vim/autoload /home/$usuario/.vim/bundle; \
+	curl -Sso /home/$usuario/.vim/autoload/pathogen.vim \
 	    https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
 
 	echo "call pathogen#infect()" > /etc/vim/vimrc.local
@@ -166,24 +162,25 @@ add_pathogem() {
 
 create_directory_structure() {
 
-	rm -rf /home/fabioluciano/*
+	rm -rf /home/$usuario/*
 
-	ln -s /mnt/doc/distros ~/Distros
-	ln -s /mnt/doc/document ~/Documentos
-	ln -s /mnt/doc/download ~/Downloads
-	ln -s /mnt/doc/image ~/Imagens
-	ln -s /mnt/doc/music ~/Música
-	ln -s /mnt/doc/photo ~/Fotos
-	ln -s /mnt/doc/study ~/Estudos
+	ln -s /mnt/doc/distros /home/$usuario/Distros
+	ln -s /mnt/doc/document /home/$usuario/Documentos
+	ln -s /mnt/doc/download /home/$usuario/Downloads
+	ln -s /mnt/doc/image /home/$usuario/Imagens
+	ln -s /mnt/doc/music /home/$usuario/Música
+	ln -s /mnt/doc/photo /home/$usuario/Fotos
+	ln -s /mnt/doc/study /home/$usuario/Estudos
 }
 
 if [ `id -u` -eq 0 ]; then
-	add_repo
-	install_packages
-	purge_packages
-	clean_packages
-	create_directory_structure
-	do_fixes
+	#add_repo
+	#install_packages
+	#purge_packages
+	#clean_packages
+	#create_directory_structure
+	#do_fixes
+	add_pathogen
 else
 	echo "Voce deve executar este script como root!"
 fi

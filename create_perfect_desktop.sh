@@ -62,7 +62,7 @@ chaves_avulsas=(
 )
 
 packages_to_install=(
-	["sysadmin-tools"]="openssh-server htop pac wireshark filezilla virtualbox-4.2 ddclient"
+	["sysadmin-tools"]="openssh-server htop pac wireshark filezilla virtualbox-4.2 curl"
 	["productivity"]="cuckoo gmailwatcher caffeine"
 	["performance-tools"]="preload"
 	["development-tools"]="nodejs valac-0.16 geany sublime-text mysql-workbench yad nginx git subversion "
@@ -174,12 +174,12 @@ create_directory_structure() {
 }
 
 if [ `id -u` -eq 0 ]; then
-	#add_repo
-	#install_packages
-	#purge_packages
-	#clean_packages
-	#create_directory_structure
-	#do_fixes
+	add_repo
+	install_packages
+	purge_packages
+	clean_packages
+	create_directory_structure
+	do_fixes
 	add_pathogen
 else
 	echo "Voce deve executar este script como root!"

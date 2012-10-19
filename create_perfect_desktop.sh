@@ -79,7 +79,7 @@ packages_to_purge=(
 )
 
 add_repo() {
-	add_repos_por_ppa #chamando função para adição de repositórios por ppa
+	#add_repos_por_ppa #chamando função para adição de repositórios por ppa
 	add_repos_avulsos #chamando função para adição de repositórios por repos avulsos
 
 	# Atualizar a lista local de pacotes
@@ -87,6 +87,7 @@ add_repo() {
 
 	# Faz upgrade dos pacotes obsoletos
 	apt-get dist-upgrade -u -y
+
 }
 
 # Adiciona repositórios provindor por PPA
@@ -138,6 +139,9 @@ do_fixes() {
 	# Depois de adicionado o pacote, ativar o teclado numérico
 	numlockx on
 
+	# Necessário adicionar o usuario ao grupo vboxusers para que dispositivos por usb funcionem nda vms
+	addgroup $usuario vboxusers
+
 	# Apos instalar o ncurses, ativa mais cores no terminal
 	echo "export TERM=xterm-256color" >>  ~/.bashrc
 
@@ -155,7 +159,10 @@ add_pathogen() {
 
 create_directory_structure() {
 
-	rm -rf /home/$usuario/*
+
+	# Cuidado com essa opção ela apagará qualquer eventual arquivo dentro de seu home.
+	# Em meu desktop funciona perfeitamente, por que como pode ver, uso links simbólicos
+	rm -rfi /home/$usuario/*
 
 	ln -s /mnt/doc/distros /home/$usuario/Distros
 	ln -s /mnt/doc/document /home/$usuario/Documentos

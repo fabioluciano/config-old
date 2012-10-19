@@ -56,7 +56,7 @@ chaves_avulsas=(
 
 packages_to_install=(
 	["sysadmin-tools"]="openssh-server htop pac wireshark filezilla virtualbox-4.2 curl"
-	["productivity"]="cuckoo gmailwatcher caffeine"
+	["productivity"]="gmailwatcher"
 	["performance-tools"]="preload"
 	["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion "
 	["php54"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug"

@@ -30,11 +30,12 @@ repos_ppa=(
 	["sublime-text"]="webupd8team/sublime-text-2" #sublime-text
 	["puddletag"]="webupd8team/puddletag" #puddletag
 	["jupiter"]="webupd8team/jupiter" #jupiter
-	["grub-customizer"]="danielrichter2007/grub-customizer" #grub-customizer
 	["yad"]="webupd8team/y-ppa-manager" #yad
 	["beatbox"]="sgringwe/beatbox"
 	["xorg-edgers"]="xorg-edgers/ppa"
 	["marlin"]="marlin-devs/marlin-daily" #marlin
+	["cuckoo"]="john.vrbanac/cuckoo" #marlin
+	["plank"]="ricotz/docky" #plank
 )
 
 # Repositórios fora do ppa
@@ -56,21 +57,22 @@ chaves_avulsas=(
 
 packages_to_install=(
 	["sysadmin-tools"]="openssh-server htop pac wireshark filezilla virtualbox-4.2 curl"
-	["productivity"]="gmailwatcher"
+	["productivity"]="gmailwatcher cuckoo"
 	["performance-tools"]="preload"
-	["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion "
-	["php54"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug"
-	["databases"]="mysql-server mysql-client apache2"
+	["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
+	["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cl"
+	["databases"]="mysql-server mysql-client postgresql pgadmin3"
 	["graphic-tools"]="gimp dia blender inkscape shutter"
-	["tweaks"]="ncurses-term ubuntu-tweak jupiter numlockx lm-sensors grub-customizer marlin screenlets hddtemp psensor"
+	["tweaks"]="ncurses-term ubuntu-tweak jupiter numlockx lm-sensors marlin screenlets hddtemp psensor plank"
 	["indicators"]="indicator-weather indicator-multiload"
 	["browsers"]="opera google-chrome-stable"
-	["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-fusion-plugins-extra compiz-fusion-plugins-main compiz-gnome compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
+	["visual-related"]=" faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
 	["codecs"]="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
 	["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag xfce4-mixer beatbox"
 	["archiver"]="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
 	["editors"]="vim libreoffice"
 	["internet-tools"]="qbittorrent"
+	["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
 )
 
 packages_to_purge=(
@@ -174,13 +176,13 @@ create_directory_structure() {
 }
 
 if [ `id -u` -eq 0 ]; then
-	add_repo
-	install_packages
-	purge_packages
-	clean_packages
+	#add_repo
+	#install_packages
+	#purge_packages
+	#clean_packages
 	create_directory_structure
-	do_fixes
-	add_pathogen
+	#do_fixes
+	#add_pathogen
 else
 	echo "Voce deve executar este script como root!"
 fi

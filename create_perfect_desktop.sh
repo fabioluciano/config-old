@@ -81,7 +81,7 @@ packages_to_purge=(
 )
 
 add_repo() {
-	#add_repos_por_ppa #chamando função para adição de repositórios por ppa
+	add_repos_por_ppa #chamando função para adição de repositórios por ppa
 	add_repos_avulsos #chamando função para adição de repositórios por repos avulsos
 
 	# Atualizar a lista local de pacotes
@@ -176,13 +176,13 @@ create_directory_structure() {
 }
 
 if [ `id -u` -eq 0 ]; then
-	#add_repo
-	#install_packages
-	#purge_packages
-	#clean_packages
+	add_repo
+	install_packages
+	purge_packages
+	clean_packages
 	create_directory_structure
-	#do_fixes
-	#add_pathogen
+	do_fixes
+	add_pathogen
 else
 	echo "Voce deve executar este script como root!"
 fi

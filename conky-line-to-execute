@@ -1,0 +1,1 @@
+conky-colors --lang=pt --theme=white --ubuntu --cpu=8 --cputemp --proc=10 --swap --battery --updates --hd=default --network --wlan=0

@@ -55,6 +55,7 @@ chaves_avulsas=(
 	["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
 )
 
+# Pacotes adicionais. Alguns estão associados diretamente a alguma ppa
 packages_to_install=(
 	["sysadmin-tools"]="openssh-server htop pac wireshark filezilla virtualbox-4.2 curl"
 	["productivity"]="gmailwatcher cuckoo"
@@ -75,10 +76,14 @@ packages_to_install=(
 	["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
 )
 
+# Pacotes desnecessários para meu uso
 packages_to_purge=(
 	["apport"]="apport apport-symptoms"
 	["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan transmission-gtk transmission-common gnome-games-data gmusicbrowser aisleriot parole"
 )
+
+# Lista de daemons para não serem executados no startup
+daemons_not_start_automatically=( apache2 nginx mysql postgresql )
 
 add_repo() {
 	add_repos_por_ppa #chamando função para adição de repositórios por ppa
@@ -159,12 +164,18 @@ add_pathogen() {
 	echo "call pathogen#infect()" > /etc/vim/vimrc.local
 }
 
+remove_daemons() {
+	for daemon in "${daemons_not_start_automatically[@]}"; do
+		sudo update-rc.d -f $daemon remove
+	done
+}
+
 create_directory_structure() {
 
 
 	# Cuidado com essa opção ela apagará qualquer eventual arquivo dentro de seu home.
 	# Em meu desktop funciona perfeitamente, por que como pode ver, uso links simbólicos
-	rm -rfi /home/$usuario/*
+	rm -rf /home/$usuario/*
 
 	ln -s /mnt/doc/distros /home/$usuario/Distros
 	ln -s /mnt/doc/document /home/$usuario/Documentos
@@ -183,6 +194,7 @@ if [ `id -u` -eq 0 ]; then
 	create_directory_structure
 	do_fixes
 	add_pathogen
+	remove_daemons
 else
 	echo "Voce deve executar este script como root!"
 fi

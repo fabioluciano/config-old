@@ -71,7 +71,7 @@ packages_to_install=(
 	["codecs"]="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
 	["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag xfce4-mixer beatbox"
 	["archiver"]="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
-	["editors"]="vim libreoffice"
+	["editors"]="vim libreoffice libreoffice-l10n-pt-br"
 	["internet-tools"]="qbittorrent"
 	["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
 )
@@ -146,11 +146,13 @@ do_fixes() {
 	# Depois de adicionado o pacote, ativar o teclado numérico
 	numlockx on
 
-	# Necessário adicionar o usuario ao grupo vboxusers para que dispositivos por usb funcionem nda vms
+	# Necessário adicionar o usuario ao grupo vboxusers para que dispositivos por usb funcionem na vms
 	addgroup $usuario vboxusers
 
 	# Apos instalar o ncurses, ativa mais cores no terminal
 	echo "export TERM=xterm-256color" >>  ~/.bashrc
+
+	echo "options snd-hda-intel model=ref" >> /etc/modprobe.d/alsa-base.conf
 
 	# detecta os sensores de temperatura
 	sensors-detect

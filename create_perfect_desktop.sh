@@ -2,9 +2,9 @@
 
 # #######################################################
 # @Author: Fábio Luciano								#
-# @Email pessoal: omega.df@gmail.com 					#
-# @Date: 03/09/2012  16:54:00 PM 						#
-# @Description: Script criado com o intuito de criar 	#
+# @Email pessoal: omega.df@gmail.com					#
+# @Date: 03/09/2012  16:54:00 PM						#
+# @Description: Script criado com o intuito de criar	#
 # o perfeito desktop para desenvolvimento				#
 # #######################################################
 

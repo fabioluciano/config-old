@@ -36,6 +36,7 @@ repos_ppa=(
 	["marlin"]="marlin-devs/marlin-daily" #marlin
 	["cuckoo"]="john.vrbanac/cuckoo" #marlin
 	["plank"]="ricotz/docky" #plank
+	["polly"]="conscioususer/polly-unstable"
 )
 
 # Repositórios fora do ppa
@@ -45,6 +46,7 @@ repos_avulsos=(
 	["opera"]="deb http://deb.opera.com/opera/ stable non-free"
 	["mediubuntu"]="deb http://packages.medibuntu.org/ $(lsb_release -cs) free non-free"
 	["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
+	["jre"]="echo 'deb http://www.duinsoft.nl/pkg debs all"
 )
 
 # Chaves dos repositórios avulsos
@@ -72,7 +74,7 @@ packages_to_install=(
 	["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag xfce4-mixer beatbox"
 	["archiver"]="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
 	["editors"]="vim libreoffice libreoffice-l10n-pt-br"
-	["internet-tools"]="qbittorrent"
+	["internet-tools"]="qbittorrent polly"
 	["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
 )
 
@@ -83,7 +85,7 @@ packages_to_purge=(
 )
 
 # Lista de daemons para não serem executados no startup
-daemons_not_start_automatically=( apache2 nginx mysql postgresql )
+daemons_not_start_automatically=( apache2 nginx mysql postgresql mongodb )
 
 add_repo() {
 	add_repos_por_ppa #chamando função para adição de repositórios por ppa
@@ -109,7 +111,7 @@ add_repos_avulsos() {
 
 		#Primeiro adicionamos a chave do repositório
 		if [ -n "${chaves_avulsas[$chave]}" ]; then
-			wget -q -O - ${chaves_avulsas[$chave]} | sudo apt-key add -
+			wget -q -O - ${chaves_avulsas[$chave]} | apt-key add -
 		fi
 
 		#Agora criamos configuramos os repositórios
@@ -123,7 +125,25 @@ install_packages() {
 	for pkg in "${packages_to_install[@]}"; do
 		apt-get install $pkg --allow-unauthenticated --force-yes -y
 	done
-	
+}
+
+# install_jre() {
+# 	apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26
+# 	apt-get update
+# 	apt-get install update-sun-jre
+# }
+
+# install_jdk() {
+# 	cd /tmp
+# 	wget -c --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" "http://goo.gl/AJ1oS" -O jdk-7u7-nb-7_2-linux-x64-ml.sh
+# 	chmod +x jdk-7u7-nb-7_2-linux-x64-ml.sh
+# 	sh jdk-7u7-nb-7_2-linux-x64-ml.sh
+
+
+# 	mkdir -p /usr/lib/jvm/
+# 	cp -R /usr/local/jdk1.7.0* /usr/lib/jvm/
+# 	update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_07/bin/javac 1
+# 	update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_07/bin/java 1
 }
 
 purge_packages() {
@@ -168,7 +188,7 @@ add_pathogen() {
 
 remove_daemons() {
 	for daemon in "${daemons_not_start_automatically[@]}"; do
-		sudo update-rc.d -f $daemon remove
+		update-rc.d -f $daemon remove
 	done
 }
 

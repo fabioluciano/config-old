@@ -24,19 +24,18 @@ repos_ppa=(
 	["shutter"]="shutter/ppa" #shutter
 	["weather"]="weather-indicator-team/ppa" #weather-indicator
 	["libreoffice"]="libreoffice/ppa" #libreoffice
-	["faenza-icon-theme"]="tiheum/equinox" #faenza-icon-theme PRECISE
+	["faenza-icon-theme"]="tiheum/equinox" #faenza-icon-theme
 	["nginx"]="nginx/stable" #nginx
-	["qbittorent"]="" #qbittorent
+	["qbittorent"]="hydr0g3n/ppa" #qbittorent
 	["sublime-text"]="webupd8team/sublime-text-2" #sublime-text
 	["puddletag"]="webupd8team/puddletag" #puddletag
-	["jupiter"]="webupd8team/jupiter" #jupiter
 	["yad"]="webupd8team/y-ppa-manager" #yad
 	["beatbox"]="sgringwe/beatbox"
-	["xorg-edgers"]="xorg-edgers/ppa"
 	["marlin"]="marlin-devs/marlin-daily" #marlin
 	["cuckoo"]="john.vrbanac/cuckoo" #marlin
 	["plank"]="ricotz/docky" #plank
-	["polly"]="conscioususer/polly-unstable"
+	["polly"]="conscioususer/polly-unstable" #multiload
+	["amd"]="makson96/fglrx" #catalyst
 )
 
 # Repositórios fora do ppa
@@ -46,7 +45,6 @@ repos_avulsos=(
 	["opera"]="deb http://deb.opera.com/opera/ stable non-free"
 	["mediubuntu"]="deb http://packages.medibuntu.org/ $(lsb_release -cs) free non-free"
 	["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
-	["jre"]="echo 'deb http://www.duinsoft.nl/pkg debs all"
 )
 
 # Chaves dos repositórios avulsos
@@ -63,10 +61,10 @@ packages_to_install=(
 	["productivity"]="gmailwatcher cuckoo"
 	["performance-tools"]="preload"
 	["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
-	["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cl"
+	["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli"
 	["databases"]="mysql-server mysql-client postgresql pgadmin3"
 	["graphic-tools"]="gimp dia blender inkscape shutter"
-	["tweaks"]="ncurses-term ubuntu-tweak jupiter numlockx lm-sensors marlin screenlets hddtemp psensor plank"
+	["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors marlin screenlets hddtemp plank fglrx-legacy"
 	["indicators"]="indicator-weather indicator-multiload"
 	["browsers"]="opera google-chrome-stable"
 	["visual-related"]=" faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
@@ -92,10 +90,10 @@ add_repo() {
 	add_repos_avulsos #chamando função para adição de repositórios por repos avulsos
 
 	# Atualizar a lista local de pacotes
-	apt-get update --fix-missing --fix-broken
+	apt-fast update --fix-missing --fix-broken
 
 	# Faz upgrade dos pacotes obsoletos
-	apt-get dist-upgrade -u -y
+	apt-fast dist-upgrade -u -y
 
 }
 
@@ -123,27 +121,8 @@ add_repos_avulsos() {
 
 install_packages() {
 	for pkg in "${packages_to_install[@]}"; do
-		apt-get install $pkg --allow-unauthenticated --force-yes -y
+		apt-fast install $pkg --allow-unauthenticated --force-yes -y
 	done
-}
-
-# install_jre() {
-# 	apt-key adv --keyserver keys.gnupg.net --recv-keys 5CB26B26
-# 	apt-get update
-# 	apt-get install update-sun-jre
-# }
-
-# install_jdk() {
-# 	cd /tmp
-# 	wget -c --no-cookies --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com" "http://goo.gl/AJ1oS" -O jdk-7u7-nb-7_2-linux-x64-ml.sh
-# 	chmod +x jdk-7u7-nb-7_2-linux-x64-ml.sh
-# 	sh jdk-7u7-nb-7_2-linux-x64-ml.sh
-
-
-# 	mkdir -p /usr/lib/jvm/
-# 	cp -R /usr/local/jdk1.7.0* /usr/lib/jvm/
-# 	update-alternatives --install /usr/bin/javac javac /usr/lib/jvm/jdk1.7.0_07/bin/javac 1
-# 	update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.7.0_07/bin/java 1
 }
 
 purge_packages() {
@@ -151,12 +130,12 @@ purge_packages() {
 		apt-get remove -y $pkg --force-yes -y
 	done
 
-	apt-get autoremove --force-yes -y --purge
+	apt-fast autoremove --force-yes -y --purge
 }
 
 clean_packages () {
-	apt-get autoremove -y
-	apt-get autoclean -y
+	apt-fast autoremove -y
+	apt-fast autoclean -y
 }
 
 do_fixes() {
@@ -209,13 +188,13 @@ create_directory_structure() {
 }
 
 if [ `id -u` -eq 0 ]; then
-	add_repo
+#	add_repo
 	install_packages
 	purge_packages
 	clean_packages
-	create_directory_structure
-	do_fixes
-	add_pathogen
+#	create_directory_structure
+#	do_fixes
+#	add_pathogen
 	remove_daemons
 else
 	echo "Voce deve executar este script como root!"

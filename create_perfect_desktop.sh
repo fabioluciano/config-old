@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # #######################################################
-# @Author: Fábio Luciano								#
-# @Email pessoal: omega.df@gmail.com					#
-# @Date: 03/09/2012  16:54:00 PM						#
+# @Author: Fábio Luciano				#
+# @Email pessoal: omega.df@gmail.com			#
+# @Date: 03/09/2012  16:54:00 PM			#
 # @Description: Script criado com o intuito de criar	#
-# o perfeito desktop para desenvolvimento				#
+# o perfeito desktop para desenvolvimento		#
 # #######################################################
 
 # Usuário a qual ficará responsável por alguns diretórios
@@ -34,8 +34,10 @@ repos_ppa=(
 	["marlin"]="marlin-devs/marlin-daily" #marlin
 	["cuckoo"]="john.vrbanac/cuckoo" #marlin
 	["plank"]="ricotz/docky" #plank
-	["polly"]="conscioususer/polly-unstable" #multiload
-	["amd"]="makson96/fglrx" #catalyst
+	["polly"]="conscioususer/polly-unstable" #polly
+	["xfce410"]="xubuntu-dev/xfce-4.10"
+	["xfce412"]="xubuntu-dev/xfce-4.12"
+	["aptfast"]="apt-fast/stable"
 )
 
 # Repositórios fora do ppa
@@ -44,7 +46,7 @@ repos_avulsos=(
 	["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
 	["opera"]="deb http://deb.opera.com/opera/ stable non-free"
 	["mediubuntu"]="deb http://packages.medibuntu.org/ $(lsb_release -cs) free non-free"
-	["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
+#	["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
 )
 
 # Chaves dos repositórios avulsos
@@ -52,24 +54,24 @@ chaves_avulsas=(
 	["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
 	["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
 	["opera"]="http://deb.opera.com/archive.key" #opera
-	["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
+#	["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
 )
 
 # Pacotes adicionais. Alguns estão associados diretamente a alguma ppa
 packages_to_install=(
-	["sysadmin-tools"]="openssh-server htop pac wireshark filezilla virtualbox-4.2 curl"
+	["sysadmin-tools"]="openssh-server htop wireshark filezilla virtualbox-4.2 curl"
 	["productivity"]="gmailwatcher cuckoo"
 	["performance-tools"]="preload"
 	["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
 	["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli"
 	["databases"]="mysql-server mysql-client postgresql pgadmin3"
 	["graphic-tools"]="gimp dia blender inkscape shutter"
-	["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors marlin screenlets hddtemp plank fglrx-legacy"
+	["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors marlin screenlets hddtemp plank"
 	["indicators"]="indicator-weather indicator-multiload"
 	["browsers"]="opera google-chrome-stable"
 	["visual-related"]=" faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
 	["codecs"]="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-	["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag xfce4-mixer beatbox"
+	["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag beatbox xfce4-mixer"
 	["archiver"]="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
 	["editors"]="vim libreoffice libreoffice-l10n-pt-br"
 	["internet-tools"]="qbittorrent polly"
@@ -188,13 +190,13 @@ create_directory_structure() {
 }
 
 if [ `id -u` -eq 0 ]; then
-#	add_repo
+	add_repo
 	install_packages
 	purge_packages
 	clean_packages
-#	create_directory_structure
-#	do_fixes
-#	add_pathogen
+	create_directory_structure
+	#do_fixes
+	#add_pathogen
 	remove_daemons
 else
 	echo "Voce deve executar este script como root!"

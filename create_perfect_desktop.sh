@@ -16,66 +16,61 @@ declare -A chaves_avulsas repos_ppa repos_avulsos packages_to_install packages_t
 
 # Definição de repositórios utilizando ppas a serem instalados
 repos_ppa=(
-	["tweak"]="tualatrix/ppa"
-	["nodejs"]="chris-lea/node.js" #nodejs
-	["vala"]="vala-team" #vala
-	["gmailwatcher"]="loneowais/gmailwatcher.dev" #gmailwhatcher
-	["gimp"]="otto-kesselgulasch/gimp" #gimp
-	["shutter"]="shutter/ppa" #shutter
-	["weather"]="weather-indicator-team/ppa" #weather-indicator
-	["libreoffice"]="libreoffice/ppa" #libreoffice
-	["faenza-icon-theme"]="tiheum/equinox" #faenza-icon-theme
-	["nginx"]="nginx/stable" #nginx
-	["qbittorent"]="hydr0g3n/ppa" #qbittorent
-	["sublime-text"]="webupd8team/sublime-text-2" #sublime-text
-	["puddletag"]="webupd8team/puddletag" #puddletag
-	["yad"]="webupd8team/y-ppa-manager" #yad
-	["beatbox"]="sgringwe/beatbox"
-	["marlin"]="marlin-devs/marlin-daily" #marlin
-	["cuckoo"]="john.vrbanac/cuckoo" #marlin
-	["plank"]="ricotz/docky" #plank
-	["polly"]="conscioususer/polly-unstable" #polly
-	["xfce410"]="xubuntu-dev/xfce-4.10"
-	["xfce412"]="xubuntu-dev/xfce-4.12"
-	["aptfast"]="apt-fast/stable"
+	["tweak"]				="tualatrix/ppa"
+	["nodejs"]				="chris-lea/node.js" #nodejs
+	["vala"]				="vala-team" #vala
+	["gmailwatcher"]		="loneowais/gmailwatcher.dev" #gmailwhatcher
+	["gimp"]				="otto-kesselgulasch/gimp" #gimp
+	["shutter"]				="shutter/ppa" #shutter
+	["libreoffice"]			="libreoffice/ppa" #libreoffice
+	["faenza-icon-theme"]	="tiheum/equinox" #faenza-icon-theme
+	["nginx"]				="nginx/stable" #nginx
+	["qbittorent"]			="hydr0g3n/ppa" #qbittorent
+	["sublime-text"]		="webupd8team/sublime-text-2" #sublime-text
+	["puddletag"]			="webupd8team/puddletag" #puddletag
+	["yad"]					="webupd8team/y-ppa-manager" #yad
+	["beatbox"]				="sgringwe/beatbox"
+	["marlin"]				="marlin-devs/marlin-daily" #marlin
+	["cuckoo"]				="john.vrbanac/cuckoo" #marlin
+	["plank"]				="ricotz/docky" #plank
+	["polly"]				="conscioususer/polly-unstable" #polly
+	["aptfast"]				="apt-fast/stable"
 )
 
 # Repositórios fora do ppa
 repos_avulsos=(
-	["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
-	["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-	["opera"]="deb http://deb.opera.com/opera/ stable non-free"
-	["mediubuntu"]="deb http://packages.medibuntu.org/ $(lsb_release -cs) free non-free"
-#	["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
+	["google-chrome"] ="deb http://dl.google.com/linux/chrome/deb/ stable main"
+	["virtualbox"]    ="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+	["opera"]         ="deb http://deb.opera.com/opera/ stable non-free"
+	["mediubuntu"]    ="deb http://packages.medibuntu.org/ $(lsb_release -cs) free non-free"
 )
 
 # Chaves dos repositórios avulsos
 chaves_avulsas=(
-	["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
-	["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
-	["opera"]="http://deb.opera.com/archive.key" #opera
-#	["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
+	["google-chrome"] ="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
+	["virtualbox"]    ="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
+	["opera"]         ="http://deb.opera.com/archive.key" #opera
 )
 
 # Pacotes adicionais. Alguns estão associados diretamente a alguma ppa
 packages_to_install=(
-	["sysadmin-tools"]="openssh-server htop wireshark filezilla virtualbox-4.2 curl"
-	["productivity"]="gmailwatcher cuckoo"
-	["performance-tools"]="preload"
-	["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
-	["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli"
-	["databases"]="mysql-server mysql-client postgresql pgadmin3"
-	["graphic-tools"]="gimp dia blender inkscape shutter"
-	["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors marlin screenlets hddtemp plank"
-	["indicators"]="indicator-weather indicator-multiload"
-	["browsers"]="opera google-chrome-stable"
-	["visual-related"]=" faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
-	["codecs"]="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-	["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag beatbox xfce4-mixer"
-	["archiver"]="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
-	["editors"]="vim libreoffice libreoffice-l10n-pt-br"
-	["internet-tools"]="qbittorrent polly"
-	["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
+	["sysadmin-tools"]     ="openssh-server htop wireshark filezilla virtualbox-4.2 curl"
+	["productivity"]       ="gmailwatcher cuckoo"
+	["performance-tools"]  ="preload"
+	["development-tools"]  ="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
+	["php"]                ="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli"
+	["databases"]          ="mysql-server mysql-client postgresql pgadmin3"
+	["graphic-tools"]      ="gimp dia blender inkscape shutter"
+	["tweaks"]             ="ncurses-term ubuntu-tweak numlockx lm-sensors marlin screenlets hddtemp plank"
+	["indicators"]         ="indicator-multiload"
+	["browsers"]           ="opera google-chrome-stable"
+	["visual-related"]     =" faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
+	["codecs"]             ="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
+	["multimedia-related"] ="flashplugin-installer vlc medibuntu-keyring audacious puddletag beatbox"
+	["archiver"]           ="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
+	["editors"]            ="vim libreoffice libreoffice-l10n-pt-br"
+	["internet-tools"]     ="qbittorrent polly"
+	["amd_make_tools"]     ="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
 )
 
 # Pacotes desnecessários para meu uso
@@ -90,13 +85,12 @@ daemons_not_start_automatically=( apache2 nginx mysql postgresql mongodb )
 add_repo() {
 	add_repos_por_ppa #chamando função para adição de repositórios por ppa
 	add_repos_avulsos #chamando função para adição de repositórios por repos avulsos
-
+	
 	# Atualizar a lista local de pacotes
 	apt-fast update --fix-missing --fix-broken
-
+	
 	# Faz upgrade dos pacotes obsoletos
 	apt-fast dist-upgrade -u -y
-
 }
 
 # Adiciona repositórios provindor por PPA
@@ -174,8 +168,6 @@ remove_daemons() {
 }
 
 create_directory_structure() {
-
-
 	# Cuidado com essa opção ela apagará qualquer eventual arquivo dentro de seu home.
 	# Em meu desktop funciona perfeitamente, por que como pode ver, uso links simbólicos
 	rm -rf /home/$usuario/*
@@ -195,8 +187,8 @@ if [ `id -u` -eq 0 ]; then
 	purge_packages
 	clean_packages
 	create_directory_structure
-	#do_fixes
-	#add_pathogen
+	do_fixes
+	add_pathogen
 	remove_daemons
 else
 	echo "Voce deve executar este script como root!"

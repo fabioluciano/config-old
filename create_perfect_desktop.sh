@@ -37,6 +37,7 @@ repos_ppa=(
     ["xfce12"]="xubuntu-dev/xfce-4.12"
     #	["fglrx"]="andrikos/ppa"
     ["terra-terminal"]="ozcanesen/terra-terminal"
+    ["mtpfs"]="langdalepl/gvfs-mtp"
 )
 
 # Repositórios fora do ppa

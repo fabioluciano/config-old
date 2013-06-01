@@ -24,7 +24,6 @@ repos_ppa=(
     ["libreoffice"]="libreoffice/ppa" #libreoffice
     ["faenza-icon-theme"]="tiheum/equinox" #faenza-icon-theme
     ["nginx"]="nginx/stable" #nginx
-    ["qbittorent"]="hydr0g3n/ppa" #qbittorent
     ["sublime-text"]="webupd8team/sublime-text-2" #sublime-text
     ["puddletag"]="webupd8team/puddletag" #puddletag
     ["yad"]="webupd8team/y-ppa-manager" #yad
@@ -32,12 +31,13 @@ repos_ppa=(
     ["cuckoo"]="john.vrbanac/cuckoo" #marlin
     ["plank"]="ricotz/docky" #plank
     ["polly"]="conscioususer/polly-unstable" #polly
-    ["aptfast"]="apt-fast/stable"
-    ["xfce10"]="xubuntu-dev/xfce-4.10"
-    ["xfce12"]="xubuntu-dev/xfce-4.12"
-    #	["fglrx"]="andrikos/ppa"
+    ["aptfastk"]="apt-fast/stable"
+#    ["xfce10"]="xubuntu-dev/xfce-4.10"
+#    ["xfce12"]="xubuntu-dev/xfce-4.12"
+#   ["fglrx"]="andrikos/ppa"
     ["terra-terminal"]="ozcanesen/terra-terminal"
     ["mtpfs"]="langdalepl/gvfs-mtp"
+    ["tlp"]="linrunner/tlp"
 )
 
 # Repositórios fora do ppa
@@ -58,22 +58,21 @@ chaves_avulsas=(
 # Pacotes adicionais. Alguns estão associados diretamente a alguma ppa
 packages_to_install=(
     ["sysadmin-tools"]="openssh-server htop wireshark filezilla virtualbox-4.2 curl"
-    ["productivity"]="gmailwatcher cuckoo"
+    ["productivity"]="cuckoo"
     ["performance-tools"]="preload"
     ["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
     ["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
     ["databases"]="mysql-server mysql-client postgresql pgadmin3"
     ["graphic-tools"]="gimp dia blender inkscape shutter"
-    ["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors screenlets hddtemp plank terra"
-    #["indicators"]=""plugins_pathogen
+    ["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors screenlets hddtemp terra tlp tlp-rdw tp-smapi-dkms smartmontools ethtool  zramswap-enabler"
     ["browsers"]="opera google-chrome-stable"
     ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
     ["codecs"]="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
     ["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag beatbox"
-    ["archiver"]="arj lha p7zip p7zip-full p7zip-rar unrar unace-nonfree"
+    ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree"
     ["editors"]="vim libreoffice libreoffice-l10n-pt-br"
     ["internet-tools"]="qbittorrent polly"
-    ["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases ia32-libs-multiarch i386 lib32gcc1 ia32-libs libc6-i386 ia32-libs"
+    ["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases lib32gcc1 ia32-libs libc6-i386 ia32-libs"
 )
 
 # Pacotes desnecessários para meu uso
@@ -199,7 +198,7 @@ create_directory_structure() {
 }
 
 if [ `id -u` -eq 0 ]; then
-    add_repo
+    # add_repo
     install_packages
     purge_packages
     clean_packages

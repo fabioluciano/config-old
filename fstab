@@ -1,0 +1,14 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+/dev/mapper/hermes-slash /               ext4    errors=remount-ro 0       1
+/dev/mapper/hermes-doc /mnt/doc        ext4    defaults        0       2
+/dev/mapper/hermes-srv /mnt/srv        ext4    defaults        0       2
+/dev/mapper/hermes-vdi /mnt/vdi        ext4    defaults        0       2
+/dev/mapper/hermes-opt /opt            ext4    defaults        0       2
+/dev/mapper/hermes-swap none            swap    sw              0       0
+tmpfs			/tmp 		tmpfs 	size=2048m 	0	0

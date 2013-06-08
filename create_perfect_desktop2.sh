@@ -1,6 +1,6 @@
 #!/bin/bash
 
-declare -A ppa ppa_xfce ppa_keys external_repository_keys external_repository packages
+declare -A ppa ppa_xfce ppa_keys external_repository_keys external_repository packages packages_purge
 
 #Get the [u|x|k|l]buntu distro id
 distro_version=`lsb_release -is`
@@ -26,7 +26,6 @@ ppa=(
     ["terra-terminal"]="ozcanesen/terra-terminal" #terra
     ["mtpfs"]="langdalepl/gvfs-mtp" #android
     ["tlp"]="linrunner/tlp" #tpl notebook battery
-    ["indicator-weather"]="jtasker/weather-indicator" #indicator-weather
     ["xorg-edgers"]="xorg-edgers/ppa" #fglrx
     #["zram"]="shnatsel/zram" #replace swap not raring
     ["xnoise"]="shkn/xnoise"
@@ -112,8 +111,8 @@ function add_external_keys() {
     echo -e "\nAdicionando Repositórios externos";
 
     for chave in ${!external_repository[@]}; do
-        echo -e " \033[32m-\033[0m key\t\033[32m$chave\033[0m"; 
-             
+        echo -e " \033[32m-\033[0m key\t\033[32m$chave\033[0m";
+
         if [ -n "${external_repository_keys[$chave]}" ]; then
             wget -q -O - ${external_repository_keys[$chave]} | apt-key add -
         fi
@@ -125,12 +124,11 @@ function add_external_keys() {
 }
 
 function add_packages() {
-
     #sudo apt-get update --fix-missing --fix-broken
     echo -e "\nAdicionando pacotes";
-    
+
     for pkg in "${packages[@]}"; do
-        echo -e " \033[32m-\033[0m pkgs\t\033[32m$pkg\033[0m";  
+        echo -e " \033[32m-\033[0m pkgs\t\033[32m$pkg\033[0m";
         apt-get install $pkg --allow-unauthenticated --force-yes -y
     done
 }
@@ -157,7 +155,10 @@ function do_fixes() {
     echo "export TERM=xterm-256color" >>  ~/.bashrc
 
     echo "options snd-hda-intel model=ref" >> /etc/modprobe.d/alsa-base.conf
+
     gsettings set org.gnome.desktop.wm.preferences theme Greybird
+    gsettings set org.gnome.desktop.interface buttons-have-icons true
+
     # detecta os sensores de temperatura
     sensors-detect
 }
@@ -183,6 +184,7 @@ function show_menu(){
         1 'Adicionar repositórios' \
         2 'Instalar pacotes' \
         3 'Executar ajustes' \
+        4 'Criar estrutura de diretórios' \
     )
 
     case $option in
@@ -194,9 +196,13 @@ function show_menu(){
             add_packages;
             purge_packages;
         ;;
-        
-        3) 
+
+        3)
             do_fixes;
+        ;;
+
+	4)
+            create_directory_structure;
         ;;
     esac
 }

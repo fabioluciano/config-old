@@ -75,8 +75,8 @@ packages_purge=(
     ["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan transmission-gtk transmission-common gnome-games-data gmusicbrowser aisleriot parole"
 )
 
-# ppa_unity=(
-# )
+# Lista de daemons para não serem executados no startup
+daemons=( apache2 nginx mysql postgresql mongodb )
 
 function init() {
     case $command in
@@ -97,7 +97,7 @@ function add_ppas() {
         add-apt-repository ppa:$repos -y
     done
 
-    if [ $distro_version == "Ubuntu" ]; then
+    if [ $distro_version == "Xubuntu" ]; then
         echo -e "\nAdicionando ppas \033[32m$distro_version\033[0m";
 
         for repos in "${ppa_xfce[@]}"; do
@@ -161,9 +161,15 @@ function do_fixes() {
 
     # detecta os sensores de temperatura
     sensors-detect
+
+    remove_daemons
 }
 
-
+function remove_daemons() {
+    for daemon in "${daemons[@]}"; do
+        update-rc.d -f $daemon remove
+    done
+}
 
 function create_directory_structure() {
     # Cuidado com essa opção ela apagará qualquer eventual arquivo dentro de seu home.

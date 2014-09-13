@@ -1,150 +1,141 @@
 #!/bin/bash
 
-# #######################################################
-# @Author: Fábio Luciano                                #
-# @Email pessoal: omega.df@gmail.com                    #
-# @Date: 03/09/2012  16:54:00 PM                        #
-# @Description: Script criado com o intuito de criar    #
-# o perfeito desktop para desenvolvimento               #
-# #######################################################
+declare -A ppa ppa_xfce ppa_keys external_repository_keys external_repository packages packages_purge
 
-# Usuário a qual ficará responsável por alguns diretórios
-usuario='fabioluciano'
-# Ativa os arrays associativos. Coloquei todos como associativos... Vai que uma hora eu preciso
-declare -A chaves_avulsas repos_ppa repos_avulsos packages_to_install packages_to_purge plugins_pathogen
+#Get the [u|x|k|l]buntu distro id
+distro_version=`lsb_release -is`
+usuario="fabioluciano"
+command="$1"
 
-# Definição de repositórios utilizando ppas a serem instalados
-repos_ppa=(
-    ["tweak"]="tualatrix/ppa"
+ppa=(
+    ["tweak"]="tualatrix/ppa" #ubuntu-tweak
     ["nodejs"]="chris-lea/node.js" #nodejs
     ["vala"]="vala-team" #vala
-    ["gmailwatcher"]="loneowais/gmailwatcher.dev" #gmailwhatcher
     ["gimp"]="otto-kesselgulasch/gimp" #gimp
     ["shutter"]="shutter/ppa" #shutter
     ["libreoffice"]="libreoffice/ppa" #libreoffice
-    ["faenza-icon-theme"]="tiheum/equinox" #faenza-icon-theme
     ["nginx"]="nginx/stable" #nginx
-    ["sublime-text"]="webupd8team/sublime-text-2" #sublime-text
-    ["puddletag"]="webupd8team/puddletag" #puddletag
-    ["yad"]="webupd8team/y-ppa-manager" #yad
-    ["beatbox"]="sgringwe/beatbox"
-    ["cuckoo"]="john.vrbanac/cuckoo" #marlin
-    ["plank"]="ricotz/docky" #plank
-    ["polly"]="conscioususer/polly-unstable" #polly
-    ["aptfastk"]="apt-fast/stable"
-#    ["xfce10"]="xubuntu-dev/xfce-4.10"
-#    ["xfce12"]="xubuntu-dev/xfce-4.12"
-#   ["fglrx"]="andrikos/ppa"
-    ["terra-terminal"]="ozcanesen/terra-terminal"
-    ["mtpfs"]="langdalepl/gvfs-mtp"
-    ["tlp"]="linrunner/tlp"
+    ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
+    ["tlp"]="linrunner/tlp" #tpl notebook battery
+    #["xorg-edgers"]="xorg-edgers/ppa" #video #carefull
+    ["xnoise"]="shkn/xnoise" #xnoise
+    ["qbittorrent"]="hydr0g3n/qbittorrent-stable" #qbittorrent
+    ["vlc"]="videolan/stable-daily" #vlc
+    ["weather"]="atareao/atareao"
+    ["clementine"]="me-davidsansome/clementine"
+    ["faenza"]="noobslab/icons"
+    ["synapse"]="synapse-core/testing"
+    ["xfce412"]="xubuntu-dev/xfce-4.12"
+    ["xfceextras"]="xubuntu-dev/extras"
+    ["java"]="webupd8team/java"
+    ["synapse"]="synapse-core/ppa"
 )
 
-# Repositórios fora do ppa
-repos_avulsos=(
-    ["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
-    ["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-    ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
-    ["mediubuntu"]="deb http://packages.medibuntu.org/ $(lsb_release -cs) free non-free"
-)
-
-# Chaves dos repositórios avulsos
-chaves_avulsas=(
+external_repository_keys=(
     ["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
     ["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
     ["opera"]="http://deb.opera.com/archive.key" #opera
+    ["videolan"]="http://download.videolan.org/pub/debian/videolan-apt.asc"
 )
 
-# Pacotes adicionais. Alguns estão associados diretamente a alguma ppa
-packages_to_install=(
-    ["sysadmin-tools"]="openssh-server htop wireshark filezilla virtualbox-4.2 curl"
-    ["productivity"]="cuckoo"
+external_repository=(
+    ["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
+    ["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+    ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
+    ["videolan"]="deb http://download.videolan.org/pub/debian/stable/ /"
+)
+
+packages=(
+    ["sysadmin-tools"]="openssh-server htop wireshark filezilla virtualbox-4.3 curl"
     ["performance-tools"]="preload"
-    ["development-tools"]="nodejs valac-0.16 sublime-text mysql-workbench yad nginx git subversion apache2"
+    ["development-tools"]="nodejs valac-0.16 sublime-text-installer mysql-workbench nginx git subversion apache2"
     ["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
     ["databases"]="mysql-server mysql-client postgresql pgadmin3"
     ["graphic-tools"]="gimp dia blender inkscape shutter"
-    ["tweaks"]="ncurses-term ubuntu-tweak numlockx lm-sensors screenlets hddtemp terra tlp tlp-rdw tp-smapi-dkms smartmontools ethtool  zramswap-enabler"
+    ["tweaks"]="thunar-dropbox-plugin xfce4-soundmenu-plugin guake oracle-java8-installer synapse diodon diodon-plugins my-weather-indicator ncurses-term ubuntu-tweak lm-sensors screenlets hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
     ["browsers"]="opera google-chrome-stable"
     ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
-    ["codecs"]="non-free-codecs libdvdcss2 faac faad ffmpeg ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-    ["multimedia-related"]="flashplugin-installer vlc medibuntu-keyring audacious puddletag beatbox"
-    ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree"
+    ["codecs"]="gstreamer0.10-plugins-ugly libxine1-ffmpeg gxine mencoder libdvdread4 icedax tagtool easytag id3tool lame libmad0 mpg321 libdvdcss2  faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
+    ["multimedia-related"]="flashplugin-installer vlc audacious ubuntu-restricted-extras"
+    ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
     ["editors"]="vim libreoffice libreoffice-l10n-pt-br"
-    ["internet-tools"]="qbittorrent polly"
-    ["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases lib32gcc1 ia32-libs libc6-i386 ia32-libs"
+    ["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases lib32gcc1 libc6-i386"
 )
 
-# Pacotes desnecessários para meu uso
-packages_to_purge=(
+packages_purge=(
     ["apport"]="apport apport-symptoms"
-    ["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan transmission-gtk transmission-common gnome-games-data gmusicbrowser aisleriot parole"
+    ["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan gnome-games-data gmusicbrowser aisleriot parole gnome-mines gnome-sudoku transmission transmission-gtk"
 )
 
-plugins_pathogen=(
-    ["nerdtree"]="scrooloose/nerdtree"
-)
 # Lista de daemons para não serem executados no startup
-daemons_not_start_automatically=( apache2 nginx mysql postgresql mongodb )
+daemons=( apache2 nginx mysql postgresql mongodb )
 
-add_repo() {
-    add_repos_por_ppa #chamando função para adição de repositórios por ppa
-    add_repos_avulsos #chamando função para adição de repositórios por repos avulsos
-
-    # Atualizar a lista local de pacotes
-    apt-fast update --fix-missing --fix-broken
-
-    # Faz upgrade dos pacotes obsoletos
-    apt-fast dist-upgrade -u -y
+function init() {
+    case $command in
+        addppa)
+            echo -e "\nAdicionando PPAs";
+            add_ppas;
+            add_external_keys;
+        ;;
+        *)
+            show_menu;
+            exit 1;
+    esac
 }
 
-# Adiciona repositórios provindor por PPA
-add_repos_por_ppa() {
-    for repos in "${repos_ppa[@]}"; do
+function add_ppas() {
+    for repos in "${ppa[@]}"; do
+        echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
         add-apt-repository ppa:$repos -y
     done
+
+    if [ $distro_version == "Ubuntu" ]; then
+        echo -e "\nAdicionando ppas \033[32m$distro_version\033[0m";
+
+        for repos in "${ppa_xfce[@]}"; do
+            echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
+            add-apt-repository ppa:$repos -y
+        done
+    fi
 }
 
-add_repos_avulsos() {
-    for chave in ${!repos_avulsos[@]}; do
+function add_external_keys() {
+    echo -e "\nAdicionando Repositórios externos";
 
-        #Primeiro adicionamos a chave do repositório
-        if [ -n "${chaves_avulsas[$chave]}" ]; then
-            wget -q -O - ${chaves_avulsas[$chave]} | apt-key add -
+    for chave in ${!external_repository[@]}; do
+        echo -e " \033[32m-\033[0m key\t\033[32m$chave\033[0m";
+
+        if [ -n "${external_repository_keys[$chave]}" ]; then
+            wget -q -O - ${external_repository_keys[$chave]} | apt-key add -
         fi
 
-        #Agora criamos configuramos os repositórios
         if [ ! -s "/etc/apt/sources.list.d/$chave.list" ]; then
-            echo "${repos_avulsos[$chave]}" >> /etc/apt/sources.list.d/$chave.list
+            echo "${external_repository[$chave]}" >> /etc/apt/sources.list.d/$chave.list
         fi
     done
 }
 
-install_packages() {
-    for pkg in "${packages_to_install[@]}"; do
-        apt-fast install $pkg --allow-unauthenticated --force-yes -y
+function add_packages() {
+    #sudo apt-get update --fix-missing --fix-broken
+    echo -e "\nAdicionando pacotes";
+
+    for pkg in "${packages[@]}"; do
+        echo -e " \033[32m-\033[0m pkgs\t\033[32m$pkg\033[0m";
+        apt-get install $pkg --allow-unauthenticated --force-yes -y
     done
 }
 
-purge_packages() {
-    for pkg in "${packages_to_purge[@]}"; do
+function purge_packages() {
+    for pkg in "${packages_purge[@]}"; do
         apt-get remove -y $pkg --force-yes -y
     done
 
-    apt-fast autoremove --force-yes -y --purge
+    apt-get autoremove --force-yes -y --purge
 }
 
-clean_packages () {
-    apt-fast autoremove -y
-    apt-fast autoclean -y
-}
-
-do_fixes() {
+function do_fixes() {
     # Por algum motivo o bash_history fica com o root como dono
     chown $usuario:$usuario ~/.bash_history
-
-    # Depois de adicionado o pacote, ativar o teclado numérico
-    numlockx on
 
     # Necessário adicionar o usuario ao grupo vboxusers para que dispositivos por usb funcionem na vms
     addgroup $usuario vboxusers
@@ -152,38 +143,26 @@ do_fixes() {
     # Apos instalar o ncurses, ativa mais cores no terminal
     echo "export TERM=xterm-256color" >>  ~/.bashrc
 
-    echo "options snd-hda-intel model=ref" >> /etc/modprobe.d/alsa-base.conf
+    gsettings set org.gnome.desktop.wm.preferences theme Greybird
+    gsettings set org.gnome.desktop.interface buttons-have-icons true
 
     # detecta os sensores de temperatura
     sensors-detect
+
+    echo allow-guest=false | sudo tee -a /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+
+    xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -t string -t string -s compiz -s ccp
+
+    remove_daemons
 }
 
-add_pathogen() {
-    mkdir -p /home/$usuario/.vim/autoload /home/$usuario/.vim/bundle; \
-    curl -Sso /home/$usuario/.vim/autoload/pathogen.vim \
-        https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim
-
-    echo "call pathogen#infect()" > /etc/vim/vimrc.local
-}
-
-add_pathogen_plugins() {
-    for repo in ${!plugins_pathogen[@]}; do
-        git clone https://github.com/${plugins_pathogen[$repo]}.git /home/$usuario/.vim/bundle/$repo
-    done
-}
-
-remove_daemons() {
-    for daemon in "${daemons_not_start_automatically[@]}"; do
+function remove_daemons() {
+    for daemon in "${daemons[@]}"; do
         update-rc.d -f $daemon remove
     done
 }
 
-install_phpqa_tools(){
-    pear config-set auto_discover 1
-    pear install --alldeps pear.phpqatools.org/phpqatools
-}
-
-create_directory_structure() {
+function create_directory_structure() {
     # Cuidado com essa opção ela apagará qualquer eventual arquivo dentro de seu home.
     # Em meu desktop funciona perfeitamente, por que como pode ver, uso links simbólicos
     rm -rf /home/$usuario/*
@@ -197,17 +176,38 @@ create_directory_structure() {
     ln -s /mnt/doc/study /home/$usuario/Estudos
 }
 
+function show_menu(){
+    option=$( dialog --stdout --title 'Adição de repositórios e atualização do sistema.' --menu 'Selecione uma opção.' 0 0 0 \
+        1 'Adicionar repositórios' \
+        2 'Instalar pacotes' \
+        3 'Executar ajustes' \
+        4 'Criar estrutura de diretórios' \
+    )
+
+    case $option in
+        1)
+            add_ppas;
+            add_external_keys;
+        ;;
+        2)
+            add_packages;
+            purge_packages;
+        ;;
+
+        3)
+            do_fixes;
+        ;;
+
+	4)
+            create_directory_structure;
+        ;;
+    esac
+}
+
+
 if [ `id -u` -eq 0 ]; then
-    # add_repo
-    install_packages
-    purge_packages
-    clean_packages
-    install_phpqa_tools
-    create_directory_structure
-    do_fixes
-    add_pathogen
-    add_pathogen_plugins
-    remove_daemons
+    init
 else
     echo "Voce deve executar este script como root!"
 fi
+

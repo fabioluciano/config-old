@@ -8,41 +8,41 @@ usuario="fabioluciano"
 command="$1"
 
 ppa=(
-    ["tweak"]="tualatrix/ppa" #ubuntu-tweak
+    ["ubuntu-tweak"]="ubuntu-tweak-testing/ppa"
     ["nodejs"]="chris-lea/node.js" #nodejs
     ["vala"]="vala-team" #vala
     ["gimp"]="otto-kesselgulasch/gimp" #gimp
     ["shutter"]="shutter/ppa" #shutter
-    ["libreoffice"]="libreoffice/ppa" #libreoffice
+    ["libreoffice"]="libreoffice/libreoffice-4-3" #libreoffice
     ["nginx"]="nginx/stable" #nginx
     ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
     ["tlp"]="linrunner/tlp" #tpl notebook battery
-    #["xorg-edgers"]="xorg-edgers/ppa" #video #carefull
-    ["xnoise"]="shkn/xnoise" #xnoise
-    ["qbittorrent"]="hydr0g3n/qbittorrent-stable" #qbittorrent
+    ["deluge"]="deluge-team/ppa" #deluge
     ["vlc"]="videolan/stable-daily" #vlc
-    ["weather"]="atareao/atareao"
-    ["clementine"]="me-davidsansome/clementine"
     ["faenza"]="noobslab/icons"
     ["synapse"]="synapse-core/testing"
     ["xfce412"]="xubuntu-dev/xfce-4.12"
     ["xfceextras"]="xubuntu-dev/extras"
     ["java"]="webupd8team/java"
     ["synapse"]="synapse-core/ppa"
+    ["plank"]="ricotz/docky"
+    ["whisker"]="gottcode/gcppa"
+    ["apps"]="noobslab/apps"
+    ["ssr"]="maarten-baert/simplescreenrecorder"
+    ["atareao"]="atareao/atareao"
 )
 
 external_repository_keys=(
     ["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
     ["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
     ["opera"]="http://deb.opera.com/archive.key" #opera
-    ["videolan"]="http://download.videolan.org/pub/debian/videolan-apt.asc"
 )
 
 external_repository=(
     ["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
     ["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
-    ["videolan"]="deb http://download.videolan.org/pub/debian/stable/ /"
+    ["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ utopic partner"
 )
 
 packages=(
@@ -52,13 +52,13 @@ packages=(
     ["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
     ["databases"]="mysql-server mysql-client postgresql pgadmin3"
     ["graphic-tools"]="gimp dia blender inkscape shutter"
-    ["tweaks"]="thunar-dropbox-plugin xfce4-soundmenu-plugin guake oracle-java8-installer synapse diodon diodon-plugins my-weather-indicator ncurses-term ubuntu-tweak lm-sensors screenlets hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
+    ["tweaks"]="pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer synapse ncurses-term ubuntu-tweak lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
     ["browsers"]="opera google-chrome-stable"
     ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
-    ["codecs"]="gstreamer0.10-plugins-ugly libxine1-ffmpeg gxine mencoder libdvdread4 icedax tagtool easytag id3tool lame libmad0 mpg321 libdvdcss2  faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs libmpeg3-1 mencoder mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-    ["multimedia-related"]="flashplugin-installer vlc audacious ubuntu-restricted-extras clementine qbittorrent"
+    ["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
+    ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama deluge simplescreenrecorder"
     ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
-    ["editors"]="vim libreoffice libreoffice-l10n-pt-br"
+    ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr"
     ["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases lib32gcc1 libc6-i386"
 )
 
@@ -116,7 +116,7 @@ function add_external_keys() {
 }
 
 function add_packages() {
-    #sudo apt-get update --fix-missing --fix-broken
+    apt-get update --fix-missing
     echo -e "\nAdicionando pacotes";
 
     for pkg in "${packages[@]}"; do
@@ -145,11 +145,16 @@ function do_fixes() {
 
     gsettings set org.gnome.desktop.wm.preferences theme Greybird
     gsettings set org.gnome.desktop.interface buttons-have-icons true
+    gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Bold 9'
 
     # detecta os sensores de temperatura
     sensors-detect
 
     echo allow-guest=false | sudo tee -a /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Bold 9'
+    gconftool-2 --set --type string /desktop/gnome/interface/gtk_theme greybird
+    gconftool-2 --set --type string /desktop/gnome/interface/icon_theme Faenza-Dark
 
     xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -t string -t string -s compiz -s ccp
 
@@ -167,7 +172,6 @@ function create_directory_structure() {
     # Em meu desktop funciona perfeitamente, por que como pode ver, uso links simbólicos
     rm -rf /home/$usuario/*
 
-    ln -s /mnt/doc/distros /home/$usuario/Distros
     ln -s /mnt/doc/document /home/$usuario/Documentos
     ln -s /mnt/doc/download /home/$usuario/Downloads
     ln -s /mnt/doc/image /home/$usuario/Imagens
@@ -198,7 +202,7 @@ function show_menu(){
             do_fixes;
         ;;
 
-	4)
+	       4)
             create_directory_structure;
         ;;
     esac
@@ -210,4 +214,3 @@ if [ `id -u` -eq 0 ]; then
 else
     echo "Voce deve executar este script como root!"
 fi
-

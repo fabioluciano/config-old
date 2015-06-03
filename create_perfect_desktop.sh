@@ -8,28 +8,25 @@ usuario="fabioluciano"
 command="$1"
 
 ppa=(
-    ["ubuntu-tweak"]="ubuntu-tweak-testing/ppa"
-    ["nodejs"]="chris-lea/node.js" #nodejs
-    ["vala"]="vala-team" #vala
+    ["vala"]="vala-team/ppa" #vala
     ["gimp"]="otto-kesselgulasch/gimp" #gimp
     ["shutter"]="shutter/ppa" #shutter
-    ["libreoffice"]="libreoffice/libreoffice-4-3" #libreoffice
-    ["nginx"]="nginx/stable" #nginx
+    ["libreoffice"]="libreoffice/libreoffice-4-4" #libreoffice
     ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
     ["tlp"]="linrunner/tlp" #tpl notebook battery
-    ["deluge"]="deluge-team/ppa" #deluge
     ["vlc"]="videolan/stable-daily" #vlc
-    ["faenza"]="noobslab/icons"
-    ["synapse"]="synapse-core/testing"
-    ["xfce412"]="xubuntu-dev/xfce-4.12"
-    ["xfceextras"]="xubuntu-dev/extras"
-    ["java"]="webupd8team/java"
-    ["synapse"]="synapse-core/ppa"
-    ["plank"]="ricotz/docky"
-    ["whisker"]="gottcode/gcppa"
-    ["apps"]="noobslab/apps"
-    ["ssr"]="maarten-baert/simplescreenrecorder"
-    ["atareao"]="atareao/atareao"
+    ["faenza"]="noobslab/icons" #icons-and-apps
+    ["synapse"]="synapse-core/testing" #synapse
+    ["xfceextras"]="xubuntu-dev/extras" #extra packages for xfce
+    ["java"]="webupd8team/java" #java8 installer
+    ["synapse"]="synapse-core/testing" #synapse
+    ["plank"]="ricotz/docky" #docky
+    ["whisker"]="gottcode/gcppa" #whisker menu
+    ["apps"]="noobslab/apps" #applications
+    ["ssr"]="maarten-baert/simplescreenrecorder" #simplescreenrecorder
+    ["atareao"]="atareao/atareao" #indicators
+    ["webupd8"]="nilarimogard/webupd8" #applications
+    ["qbt"]="qbittorrent-team/qbittorrent-stable" #qbt
 )
 
 external_repository_keys=(
@@ -46,24 +43,24 @@ external_repository=(
 )
 
 packages=(
-    ["sysadmin-tools"]="openssh-server htop wireshark filezilla virtualbox-4.3 curl"
+    ["network-tools"]="openssh-server wireshark curl"
+    ["sysadmin-tools"]=" htop  filezilla virtualbox-4.3 "
     ["performance-tools"]="preload"
-    ["development-tools"]="nodejs valac-0.16 sublime-text-installer nginx git subversion apache2"
+    ["development-tools"]="valac sublime-text-installer git subversion apache2"
     ["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
     ["databases"]="mysql-server mysql-client postgresql pgadmin3"
     ["graphic-tools"]="gimp dia blender inkscape shutter"
-    ["tweaks"]="pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer synapse ncurses-term ubuntu-tweak lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
+    ["tweaks"]="telegram-purple  pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
     ["browsers"]="opera google-chrome-stable"
     ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
-    ["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs mjpegtools mp3gain mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-    ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama deluge simplescreenrecorder"
+    ["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
+    ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama simplescreenrecorder"
     ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
     ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr"
-    ["amd_make_tools"]="cdbs fakeroot build-essential dh-make debconf debhelper dkms libqtgui4 libstdc++6 libelfg0 execstack dh-modaliases lib32gcc1 libc6-i386"
-)
+    ["indicators"]="pidgin-indicator youtube-indicator touchpad-indicator pomodoro-indicator calendar-indicator"
+    )
 
 packages_purge=(
-    ["apport"]="apport apport-symptoms"
     ["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan gnome-games-data gmusicbrowser aisleriot parole gnome-mines gnome-sudoku transmission transmission-gtk"
 )
 
@@ -89,14 +86,7 @@ function add_ppas() {
         add-apt-repository ppa:$repos -y
     done
 
-    if [ $distro_version == "Ubuntu" ]; then
-        echo -e "\nAdicionando ppas \033[32m$distro_version\033[0m";
-
-        for repos in "${ppa_xfce[@]}"; do
-            echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
-            add-apt-repository ppa:$repos -y
-        done
-    fi
+    apt-get update --fix-missing
 }
 
 function add_external_keys() {
@@ -116,7 +106,6 @@ function add_external_keys() {
 }
 
 function add_packages() {
-    apt-get update --fix-missing
     echo -e "\nAdicionando pacotes";
 
     for pkg in "${packages[@]}"; do
@@ -134,29 +123,33 @@ function purge_packages() {
 }
 
 function do_fixes() {
-    # Por algum motivo o bash_history fica com o root como dono
+
+    # Corrige o dono do arquivo de histórico do bash
     chown $usuario:$usuario ~/.bash_history
 
-    # Necessário adicionar o usuario ao grupo vboxusers para que dispositivos por usb funcionem na vms
+    # Adiciona o usuário ao grupo do virtualbox, possibilitando a utilização de periféricos por USB
     addgroup $usuario vboxusers
 
     # Apos instalar o ncurses, ativa mais cores no terminal
     echo "export TERM=xterm-256color" >>  ~/.bashrc
 
+    xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -t string -t string -s compiz -s ccp
+
     gsettings set org.gnome.desktop.wm.preferences theme Greybird
     gsettings set org.gnome.desktop.interface buttons-have-icons true
     gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
     gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Bold 9'
+    gconftool-2 --set --type string /desktop/gnome/interface/gtk_theme greybird
+    gconftool-2 --set --type string /desktop/gnome/interface/icon_theme Faenza-Dar
+
 
     # detecta os sensores de temperatura
     sensors-detect
 
     echo allow-guest=false | sudo tee -a /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
-    gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Bold 9'
-    gconftool-2 --set --type string /desktop/gnome/interface/gtk_theme greybird
-    gconftool-2 --set --type string /desktop/gnome/interface/icon_theme Faenza-Dark
 
-    xfconf-query -c xfce4-session -p /sessions/Failsafe/Client0_Command -t string -t string -s compiz -s ccp
+
+    curl -kL https://raw.github.com/cstrap/monaco-font/master/install-font-ubuntu.sh | bash
 
     remove_daemons
 }
@@ -170,7 +163,6 @@ function remove_daemons() {
 function create_directory_structure() {
     # Cuidado com essa opção ela apagará qualquer eventual arquivo dentro de seu home.
     # Em meu desktop funciona perfeitamente, por que como pode ver, uso links simbólicos
-    rm -rf /home/$usuario/*
 
     ln -s /mnt/doc/document /home/$usuario/Documentos
     ln -s /mnt/doc/download /home/$usuario/Downloads
@@ -180,12 +172,17 @@ function create_directory_structure() {
     ln -s /mnt/doc/study /home/$usuario/Estudos
 }
 
+function install_composer() {
+	echo 'no no no';
+}
+
 function show_menu(){
     option=$( dialog --stdout --title 'Adição de repositórios e atualização do sistema.' --menu 'Selecione uma opção.' 0 0 0 \
         1 'Adicionar repositórios' \
         2 'Instalar pacotes' \
         3 'Executar ajustes' \
         4 'Criar estrutura de diretórios' \
+        5 'Criar estrutura PHP' \
     )
 
     case $option in
@@ -197,13 +194,14 @@ function show_menu(){
             add_packages;
             purge_packages;
         ;;
-
         3)
             do_fixes;
         ;;
-
-	       4)
+        4)
             create_directory_structure;
+        ;;
+        5)
+            install_composer;
         ;;
     esac
 }

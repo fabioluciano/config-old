@@ -11,7 +11,7 @@ ppa=(
     ["vala"]="vala-team/ppa" #vala
     ["gimp"]="otto-kesselgulasch/gimp" #gimp
     ["shutter"]="shutter/ppa" #shutter
-    ["libreoffice"]="libreoffice/libreoffice-4-4" #libreoffice
+    ["libreoffice"]="libreoffice/libreoffice-5-0" #libreoffice
     ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
     ["tlp"]="linrunner/tlp" #tpl notebook battery
     ["vlc"]="videolan/stable-daily" #vlc
@@ -27,6 +27,7 @@ ppa=(
     ["atareao"]="atareao/atareao" #indicators
     ["webupd8"]="nilarimogard/webupd8" #applications
     ["qbt"]="qbittorrent-team/qbittorrent-stable" #qbt
+    ["nvidia"]="graphics-drivers/ppa" #qbt
 )
 
 external_repository_keys=(
@@ -52,11 +53,11 @@ packages=(
     ["graphic-tools"]="gimp dia blender inkscape shutter"
     ["tweaks"]="telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java9-installer oracle-java9-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
     ["browsers"]="opera google-chrome-stable"
-    ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default"
+    ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-355"
     ["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
     ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama simplescreenrecorder"
     ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
-    ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr"
+    ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr libreoffice-style-breeze"
     ["indicators"]="pidgin-indicator youtube-indicator touchpad-indicator pomodoro-indicator calendar-indicator"
     )
 

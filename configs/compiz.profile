@@ -1,28 +1,14 @@
-[workarounds]
-s0_legacy_fullscreen = true
-s0_firefox_menu_fix = true
-s0_force_glx_sync = true
-
-[workspacenames]
-s0_names = Navegação;Desenvolvimento;Design;Virtualização;
-s0_bold_text = false
-s0_text_placement = 1
-
-[place]
-s0_mode = 1
-
-[move]
-s0_lazy_positioning = true
-
-[opengl]
-s0_lighting = true
-
 [core]
 s0_active_plugins = core;composite;opengl;copytex;maximumize;compiztoolbox;decor;regex;imgjpeg;gnomecompat;wall;staticswitcher;resize;put;mousepoll;place;animation;move;imgpng;commands;text;grid;workarounds;session;fade;workspacenames;expo;scale;showdesktop;
 s0_outputs = 1366x768+0+0;
 s0_show_desktop_edge = BottomRight
 s0_hsize = 2
 s0_vsize = 2
+
+[workspacenames]
+s0_names = Navegação;Desenvolvimento;Design;Virtualização;
+s0_bold_text = false
+s0_text_placement = 1
 
 [expo]
 s0_expo_edge = TopRight
@@ -38,18 +24,33 @@ s0_zoom = 5,000000
 s0_icon_only = true
 s0_auto_rotate = true
 
-[decor]
-s0_mipmap = true
+[opengl]
+s0_lighting = true
 
-[composite]
-s0_refresh_rate = 50
+[scale]
+s0_overlay_icon = 1
+s0_initiate_edge = BottomLeft
+
+[place]
+s0_mode = 1
+
+[move]
+s0_lazy_positioning = true
 
 [grid]
 s0_bottom_edge_action = 2
 s0_outline_color = #eeeeee9f
 s0_fill_color = #7979794f
 
-[scale]
-s0_overlay_icon = 1
-s0_initiate_edge = BottomLeft
+[decor]
+s0_command = /usr/bin/gtk-window-decorator --metacity-theme Greybird --replace
+s0_mipmap = true
+
+[composite]
+s0_refresh_rate = 50
+
+[workarounds]
+s0_legacy_fullscreen = true
+s0_firefox_menu_fix = true
+s0_force_glx_sync = true
 

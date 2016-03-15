@@ -23,7 +23,8 @@ ppa=(
     ["atareao"]="atareao/atareao" #indicators
     ["webupd8"]="nilarimogard/webupd8" #applications
     ["qbt"]="qbittorrent-team/qbittorrent-stable" #qbt
-    ["nvidia"]="graphics-drivers/ppa" #qbt
+    ["nvidia"]="graphics-drivers/ppa" #nvidia
+    ["plank"]="docky-core/stable" #planq
 )
 
 external_repository_keys=(

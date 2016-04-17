@@ -8,60 +8,61 @@ usuario=$SUDO_USER
 command="$1"
 
 ppa=(
-    ["vala"]="vala-team/ppa" #vala
-    ["gimp"]="otto-kesselgulasch/gimp" #gimp
-    ["libreoffice"]="libreoffice/libreoffice-5-0" #libreoffice
-    ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
-    ["tlp"]="linrunner/tlp" #tpl notebook battery
-    ["vlc"]="videolan/stable-daily" #vlc
-    ["synapse"]="synapse-core/testing" #synapse
-    ["xfceextras"]="xubuntu-dev/extras" #extra packages for xfce
-    ["java"]="webupd8team/java" #java8 installer
-    ["plank"]="ricotz/docky" #docky
-    ["whisker"]="gottcode/gcppa" #whisker menu
-    ["apps"]="noobslab/apps" #applications
-    ["atareao"]="atareao/atareao" #indicators
-    ["webupd8"]="nilarimogard/webupd8" #applications
-    ["qbt"]="qbittorrent-team/qbittorrent-stable" #qbt
-    ["nvidia"]="graphics-drivers/ppa" #qbt
+["vala"]="vala-team/ppa" #vala
+["gimp"]="otto-kesselgulasch/gimp" #gimp
+["libreoffice"]="libreoffice/libreoffice-5-0" #libreoffice
+["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
+["tlp"]="linrunner/tlp" #tpl notebook battery
+["vlc"]="videolan/stable-daily" #vlc
+["synapse"]="synapse-core/testing" #synapse
+["xfceextras"]="xubuntu-dev/extras" #extra packages for xfce
+["java"]="webupd8team/java" #java8 installer
+["plank"]="ricotz/docky" #docky
+["whisker"]="gottcode/gcppa" #whisker menu
+["apps"]="noobslab/apps" #applications
+["atareao"]="atareao/atareao" #indicators
+["webupd8"]="nilarimogard/webupd8" #applications
+["qbt"]="qbittorrent-team/qbittorrent-stable" #qbt
+["nvidia"]="graphics-drivers/ppa" #qbt
+["clementine"]="me-davidsansome/clementine"
 )
 
 external_repository_keys=(
-    ["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
-    ["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
-    ["opera"]="http://deb.opera.com/archive.key" #opera
-    ["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
+["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
+["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
+["opera"]="http://deb.opera.com/archive.key" #opera
+["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
 )
 
 external_repository=(
-    ["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
-    ["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-    ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
-    ["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ utopic partner"
-    ["getdeb"]="deb http://archive.getdeb.net/ubuntu wily-getdeb apps"
+["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
+["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+["opera"]="deb http://deb.opera.com/opera/ stable non-free"
+["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ utopic partner"
+["getdeb"]="deb http://archive.getdeb.net/ubuntu wily-getdeb apps"
 )
 
 packages=(
-    ["network-tools"]="openssh-server wireshark curl"
-    ["sysadmin-tools"]="htop  filezilla virtualbox-5.0"
-    ["performance-tools"]="preload"
-    ["development-tools"]="valac sublime-text-installer git subversion apache2"
-    ["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-xsl php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
-    ["databases"]="mysql-server mysql-client mysql-workbench postgresql pgadmin3"
-    ["graphic-tools"]="gimp dia blender inkscape shutter"
-    ["tweaks"]="corebird xfce4-goodies xfce4-messenger-plugin telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
-    ["browsers"]="opera google-chrome-stable firefox firefox-locale-br"
-    ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-355"
-    ["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-    ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna"
-    ["deprecated"]="simplescreenrecorder"
-    ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
-    ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr libreoffice-style-breeze"
-    ["indicators"]="pidgin-indicator touchpad-indicator"
+["network-tools"]="openssh-server wireshark curl"
+["sysadmin-tools"]="htop filezilla virtualbox-5.0"
+["performance-tools"]="preload"
+["development-tools"]="valac sublime-text-installer git subversion apache2"
+["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-xsl php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
+["databases"]="mysql-server mysql-client mysql-workbench postgresql pgadmin3"
+["graphic-tools"]="gimp dia blender inkscape shutter"
+["tweaks"]="corebird xfce4-goodies xfce4-messenger-plugin telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
+["browsers"]="opera google-chrome-stable firefox firefox-locale-br"
+["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-355"
+["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
+["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna"
+["deprecated"]="simplescreenrecorder"
+["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
+["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr libreoffice-style-breeze"
+["indicators"]="pidgin-indicator touchpad-indicator"
 )
 
 packages_purge=(
-    ["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan gnome-games-data gmusicbrowser aisleriot parole gnome-mines gnome-sudoku transmission transmission-gtk"
+["xfce-apps"]="orage onboard abiword gnumeric gnumeric-common gnumeric-doc simple-scan gnome-games-data gmusicbrowser aisleriot parole gnome-mines gnome-sudoku transmission transmission-gtk"
 )
 
 # Lista de daemons para não serem executados no startup
@@ -70,13 +71,13 @@ daemons=( apache2 nginx mysql postgresql mongodb )
 function init() {
     case $command in
         addppa)
-            echo -e "\nAdicionando PPAs";
-            add_ppas;
-            add_external_keys;
+        echo -e "\nAdicionando PPAs";
+        add_ppas;
+        add_external_keys;
         ;;
         *)
-            show_menu;
-            exit 1;
+        show_menu;
+        exit 1;
     esac
 }
 
@@ -147,8 +148,6 @@ function do_fixes() {
     sensors-detect
 
     echo allow-guest=false | sudo tee -a /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
-
-
     curl -kL https://raw.github.com/cstrap/monaco-font/master/install-font-ubuntu.sh | bash
 
     remove_daemons
@@ -177,21 +176,21 @@ function install_composer() {
     if [ ! -d /home/$usuario/.composer ]; then
         mkdir /home/$usuario/.composer
     fi
-    
+
 
     echo '{
-    "require": {
-        "halleck45/phpmetrics": "@dev",
-        "squizlabs/php_codesniffer": "*",
-        "phpunit/phpunit": "*",
-        "sebastian/phpcpd": "*",
-        "sebastian/phpdcd": "*",
-        "phpmd/phpmd" : "@stable",
-        "pdepend/pdepend" : "@stable",
-        "phploc/phploc": "*",
-        "sebastian/hhvm-wrapper": "*",
-        "theseer/phpdox": "*"
-    }
+        "require": {
+            "halleck45/phpmetrics": "@dev",
+            "squizlabs/php_codesniffer": "*",
+            "phpunit/phpunit": "*",
+            "sebastian/phpcpd": "*",
+            "sebastian/phpdcd": "*",
+            "phpmd/phpmd" : "@stable",
+            "pdepend/pdepend" : "@stable",
+            "phploc/phploc": "*",
+            "sebastian/hhvm-wrapper": "*",
+            "theseer/phpdox": "*"
+        }
     }' > /home/$usuario/.composer/composer.json
 
     curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
@@ -205,30 +204,30 @@ function install_composer() {
 
 function show_menu(){
     option=$( dialog --stdout --title 'Adição de repositórios e atualização do sistema.' --menu 'Selecione uma opção.' 0 0 0 \
-        1 'Adicionar repositórios' \
-        2 'Instalar pacotes' \
-        3 'Executar ajustes' \
-        4 'Criar estrutura de diretórios' \
-        5 'Criar estrutura de Desenvolvimento'
+    1 'Adicionar repositórios' \
+    2 'Instalar pacotes' \
+    3 'Executar ajustes' \
+    4 'Criar estrutura de diretórios' \
+    5 'Criar estrutura de Desenvolvimento'
     )
 
     case $option in
         1)
-            add_ppas;
-            add_external_keys;
+        add_ppas;
+        add_external_keys;
         ;;
         2)
-            add_packages;
-            purge_packages;
+        add_packages;
+        purge_packages;
         ;;
         3)
-            do_fixes;
+        do_fixes;
         ;;
         4)
-            create_directory_structure;
+        create_directory_structure;
         ;;
         5)
-            install_composer;
+        install_composer;
         ;;
     esac
 }

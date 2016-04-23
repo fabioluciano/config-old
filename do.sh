@@ -17,14 +17,15 @@ ppa=(
     ["synapse"]="synapse-core/testing" #synapse
     ["xfceextras"]="xubuntu-dev/extras" #extra packages for xfce
     ["java"]="webupd8team/java" #java8 installer
-    ["plank"]="ricotz/docky" #docky
     ["whisker"]="gottcode/gcppa" #whisker menu
     ["apps"]="noobslab/apps" #applications
     ["atareao"]="atareao/atareao" #indicators
     ["webupd8"]="nilarimogard/webupd8" #applications
     ["qbt"]="qbittorrent-team/qbittorrent-stable" #qbt
     ["nvidia"]="graphics-drivers/ppa" #qbt
+    ["plank"]="docky-core/stable" #plank
     ["clementine"]="me-davidsansome/clementine"
+    ["atom"]="webupd8team/atom"
 )
 
 external_repository_keys=(
@@ -32,28 +33,30 @@ external_repository_keys=(
     ["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
     ["opera"]="http://deb.opera.com/archive.key" #opera
     ["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
+    #["node"]="https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
 )
 
 external_repository=(
     ["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
     ["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
     ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
-    ["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ utopic partner"
-    ["getdeb"]="deb http://archive.getdeb.net/ubuntu wily-getdeb apps"
-    )
+    ["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ $(lsb_release -cs) partner"
+    ["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
+    #["node"]="deb https://deb.nodesource.com/iojs_1.x $(lsb_release -cs) main"
+)
 
 packages=(
     ["network-tools"]="openssh-server wireshark curl"
     ["sysadmin-tools"]="htop filezilla virtualbox-5.0"
     ["performance-tools"]="preload"
-    ["development-tools"]="valac sublime-text-installer git subversion apache2"
-    ["php"]="php5 libapache2-mod-php5 php5-dev php5-gd php5-geoip php5-mcrypt php5-memcache php5-xsl php5-memcached php5-pgsql php5-xdebug php5-curl php5-mongo php5-mysql php5-imagick php5-cli php-pear"
+    ["development-tools"]="valac sublime-text-installer git subversion apache2 atom"
+    ["php"]="php libapache2-mod-php php-dev php-gd php-geoip php-mcrypt php-mbstring php-memcache php-xsl php-memcached php-pgsql php-xdebug php-curl php-mongodb php-mysql php-imagick php-cli php-pear"
     ["databases"]="mysql-server mysql-client mysql-workbench postgresql pgadmin3"
     ["graphic-tools"]="gimp dia blender inkscape shutter"
-    ["tweaks"]="corebird xfce4-goodies xfce4-messenger-plugin telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype"
+    ["tweaks"]="bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386"
     ["browsers"]="opera google-chrome-stable firefox firefox-locale-br"
-    ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-355"
-    ["codecs"]="gstreamer0.10-plugins-ugly libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
+    ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-364"
+    ["codecs"]="libavcodec-extra libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
     ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna"
     ["deprecated"]="simplescreenrecorder"
     ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
@@ -103,7 +106,7 @@ function add_external_keys() {
         fi
     done
 
-    apt-get update --fix-missing
+    apt update --fix-missing
 }
 
 function add_packages() {
@@ -111,16 +114,16 @@ function add_packages() {
 
     for pkg in "${packages[@]}"; do
         echo -e " \033[32m-\033[0m pkgs\t\033[32m$pkg\033[0m";
-        apt-get install $pkg --allow-unauthenticated --force-yes -y
+        apt install $pkg --allow-unauthenticated -y
     done
 }
 
 function purge_packages() {
     for pkg in "${packages_purge[@]}"; do
-        apt-get remove -y $pkg --force-yes -y
+        apt remove -y $pkg -y
     done
 
-    apt-get autoremove --force-yes -y --purge
+    apt autoremove -y --purge
 }
 
 function do_fixes() {

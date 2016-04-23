@@ -26,6 +26,7 @@ ppa=(
     ["plank"]="docky-core/stable" #plank
     ["clementine"]="me-davidsansome/clementine"
     ["atom"]="webupd8team/atom"
+    ["brackets"]="webupd8team/brackets"
 )
 
 external_repository_keys=(
@@ -49,7 +50,7 @@ packages=(
     ["network-tools"]="openssh-server wireshark curl"
     ["sysadmin-tools"]="htop filezilla virtualbox-5.0"
     ["performance-tools"]="preload"
-    ["development-tools"]="valac sublime-text-installer git subversion apache2 atom"
+    ["development-tools"]="valac sublime-text-installer git subversion apache2 atom brackets"
     ["php"]="php libapache2-mod-php php-dev php-gd php-geoip php-mcrypt php-mbstring php-memcache php-xsl php-memcached php-pgsql php-xdebug php-curl php-mongodb php-mysql php-imagick php-cli php-pear"
     ["databases"]="mysql-server mysql-client mysql-workbench postgresql pgadmin3"
     ["graphic-tools"]="gimp dia blender inkscape shutter"
@@ -57,11 +58,12 @@ packages=(
     ["browsers"]="opera google-chrome-stable firefox firefox-locale-br"
     ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-364"
     ["codecs"]="libavcodec-extra libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
-    ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna"
+    ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna evince"
     ["deprecated"]="simplescreenrecorder"
     ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
     ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr libreoffice-style-breeze"
     ["indicators"]="pidgin-indicator touchpad-indicator"
+    ["notebook-only"]="laptop-mode-tools"
 )
 
 packages_purge=(

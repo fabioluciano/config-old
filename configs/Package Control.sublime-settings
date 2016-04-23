@@ -1,0 +1,39 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Additional PHP Snippets",
+		"AdvancedNewFile",
+		"Alignment",
+		"AngularJS",
+		"Backbone.js",
+		"Base16 Color Schemes",
+		"Better CoffeeScript",
+		"Bower",
+		"BracketHighlighter",
+		"Colorcoder",
+		"Dayle Rees Color Schemes",
+		"DocBlockr",
+		"Emmet",
+		"Git",
+		"GitGutter",
+		"Grunt",
+		"Gulp",
+		"HTML5",
+		"HTMLAttributes",
+		"Jade",
+		"jQuery",
+		"JSHint Gutter",
+		"LESS",
+		"MarkdownEditing",
+		"Package Control",
+		"ReactJS",
+		"SideBarEnhancements",
+		"Stylus",
+		"SVN",
+		"Tag",
+		"Theme - Spacegray"
+	]
+}

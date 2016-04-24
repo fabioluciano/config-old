@@ -211,7 +211,8 @@ function development() {
       "pdepend/pdepend" : "@stable",
       "phploc/phploc": "*",
       "sebastian/hhvm-wrapper": "*",
-      "theseer/phpdox": "*"
+      "theseer/phpdox": "*",
+      "producer/producer": "stable"
     }
   }' > /home/$usuario/.composer/composer.json
 

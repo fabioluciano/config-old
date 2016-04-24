@@ -28,6 +28,7 @@ ppa=(
   ["clementine"]="me-davidsansome/clementine"
   ["atom"]="webupd8team/atom"
   ["brackets"]="webupd8team/brackets"
+  ["nginx"]="nginx/stable"
 )
 
 external_repository_keys=(
@@ -51,8 +52,9 @@ packages=(
   ["network-tools"]="openssh-server wireshark curl"
   ["sysadmin-tools"]="htop filezilla virtualbox-5.0"
   ["performance-tools"]="preload"
-  ["development-tools"]="valac sublime-text-installer git subversion apache2 atom brackets"
-  ["php"]="php libapache2-mod-php php-dev php-gd php-geoip php-mcrypt php-mbstring php-memcache php-xsl php-memcached php-pgsql php-xdebug php-curl php-mongodb php-mysql php-imagick php-cli php-pear"
+  ["servers"]="apache2 nginx"
+  ["development-tools"]="valac sublime-text-installer git subversion atom brackets"
+  ["php"]="php libapache2-mod-php php-dev php-gd php-geoip php-mcrypt php-mbstring php-memcache php-xsl php-memcached php-pgsql php-xdebug php-curl php-mongodb php-mysql php-imagick php-cli php-pear php-fpm"
   ["databases"]="mysql-server mysql-client mysql-workbench postgresql pgadmin3"
   ["graphic-tools"]="gimp dia blender inkscape shutter"
   ["tweaks"]="bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 menulibre"
@@ -75,7 +77,7 @@ packages_purge=(
 startup_apps=( guake plank )
 
 # Lista de daemons para não serem executados no startup
-daemons=( apache2 nginx mysqld postgresql mongodb minidlnad)
+daemons=( apache2 nginx mysql postgresql mongodb minidlna php7.0-fpm )
 
 function init() {
   case $command in

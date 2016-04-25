@@ -36,6 +36,7 @@ external_repository_keys=(
   ["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
   ["opera"]="http://deb.opera.com/archive.key" #opera
   ["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
+  ["jenkins"]="http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key" #jenkins
   #["node"]="https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
 )
 
@@ -45,6 +46,7 @@ external_repository=(
   ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
   ["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ $(lsb_release -cs) partner"
   ["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
+  ["jenkins"]="deb http://pkg.jenkins-ci.org/debian binary"
   #["node"]="deb https://deb.nodesource.com/iojs_1.x $(lsb_release -cs) main"
 )
 

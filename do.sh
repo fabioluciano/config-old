@@ -32,8 +32,8 @@ ppa=(
 )
 
 external_repository_keys=(
-  ["google-chrome"]="https://dl-ssl.google.com/linux/linux_signing_key.pub" #google-chrome
-  ["virtualbox"]="http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc" #virtualbox
+  ["google-chrome"]="https://dl.google.com/linux/linux_signing_key.pub" #google-chrome
+  ["virtualbox_2016"]="https://www.virtualbox.org/download/oracle_vbox_2016.asc"
   ["opera"]="http://deb.opera.com/archive.key" #opera
   ["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
   ["jenkins"]="http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key" #jenkins

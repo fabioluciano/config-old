@@ -216,7 +216,7 @@ function development() {
       "phploc/phploc": "*",
       "sebastian/hhvm-wrapper": "*",
       "theseer/phpdox": "*",
-      "producer/producer": "stable"
+      "producer/producer": "@stable"
     }
   }' > /home/$usuario/.composer/composer.json
 

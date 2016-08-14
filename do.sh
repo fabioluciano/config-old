@@ -2,8 +2,6 @@
 
 declare -A ppa ppa_xfce ppa_keys external_repository_keys external_repository packages packages_purge
 
-#Get the [u|x|k|l]buntu distro id
-distro_version=`lsb_release -is`
 usuario=$SUDO_USER
 diretorio=$(dirname $0)
 command="$1"
@@ -11,7 +9,7 @@ command="$1"
 ppa=(
   ["vala"]="vala-team/ppa" #vala
   ["gimp"]="otto-kesselgulasch/gimp" #gimp
-  ["libreoffice"]="libreoffice/libreoffice-5-0" #libreoffice
+  ["libreoffice"]="libreoffice/libreoffice" #libreoffice
   ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
   ["tlp"]="linrunner/tlp" #tpl notebook battery
   ["vlc"]="videolan/stable-daily" #vlc
@@ -28,43 +26,37 @@ ppa=(
   ["clementine"]="me-davidsansome/clementine"
   ["atom"]="webupd8team/atom"
   ["brackets"]="webupd8team/brackets"
-  ["nginx"]="nginx/stable"
 )
 
 external_repository_keys=(
   ["google-chrome"]="https://dl.google.com/linux/linux_signing_key.pub" #google-chrome
+  ["virtualbox"]="https://www.virtualbox.org/download/oracle_vbox.asc"
   ["virtualbox_2016"]="https://www.virtualbox.org/download/oracle_vbox_2016.asc"
   ["opera"]="http://deb.opera.com/archive.key" #opera
   ["getdeb"]="http://archive.getdeb.net/getdeb-archive.key" #getdeb
-  ["jenkins"]="http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key" #jenkins
-  #["node"]="https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
 )
 
 external_repository=(
-  ["google-chrome"]="deb http://dl.google.com/linux/chrome/deb/ stable main"
+  ["google-chrome"]="deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main"
   ["virtualbox"]="deb http://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
   ["opera"]="deb http://deb.opera.com/opera/ stable non-free"
   ["canonical-partner"]="deb http://archive.canonical.com/ubuntu/ $(lsb_release -cs) partner"
   ["getdeb"]="deb http://archive.getdeb.net/ubuntu $(lsb_release -cs)-getdeb apps"
-  ["jenkins"]="deb http://pkg.jenkins-ci.org/debian binary"
-  #["node"]="deb https://deb.nodesource.com/iojs_1.x $(lsb_release -cs) main"
+  ["docker"]="deb https://apt.dockerproject.org/repo ubuntu-$(lsb_release -cs) main"
 )
 
 packages=(
   ["network-tools"]="openssh-server wireshark curl"
-  ["sysadmin-tools"]="htop filezilla virtualbox-5.0"
+  ["sysadmin-tools"]="htop filezilla virtualbox-5.1"
   ["performance-tools"]="preload"
-  ["servers"]="apache2 "
   ["development-tools"]="valac sublime-text-installer git subversion atom brackets"
-  ["php"]="php libapache2-mod-php php-dev php-gd php-geoip php-mcrypt php-mbstring php-memcache php-xsl php-memcached php-pgsql php-xdebug php-curl php-mongodb php-mysql php-imagick php-cli php-pear php-fpm"
-  ["databases"]="mysql-server mysql-client mysql-workbench postgresql pgadmin3"
-  ["graphic-tools"]="gimp dia blender inkscape shutter"
-  ["tweaks"]="bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 menulibre"
+  ["databases"]="mysql-client mysql-workbench postgresql pgadmin3"
+  ["graphic- tools"]="gimp dia blender inkscape shutter"
+  ["tweaks"]="apt-transport-https docker-engine docker-compose ca-certificates bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 menulibre"
   ["browsers"]="opera google-chrome-stable firefox firefox-locale-br"
   ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-364"
   ["codecs"]="libavcodec-extra libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
   ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna evince"
-  ["deprecated"]="simplescreenrecorder"
   ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
   ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr libreoffice-style-breeze"
   ["indicators"]="pidgin-indicator touchpad-indicator"

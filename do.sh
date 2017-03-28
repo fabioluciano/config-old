@@ -26,7 +26,7 @@ ppa=(
   ["clementine"]="me-davidsansome/clementine"
   ["atom"]="webupd8team/atom"
   ["brackets"]="webupd8team/brackets"
-  ["terminix"]="webupd8team/terminix"
+  ["sound-switcher"]="yktooo/ppa"
 )
 
 external_repository_keys=(
@@ -53,7 +53,7 @@ packages=(
   ["development-tools"]="valac sublime-text-installer git subversion atom brackets"
   ["databases"]="mysql-client mysql-workbench postgresql pgadmin3"
   ["graphic- tools"]="gimp dia blender inkscape shutter"
-  ["tweaks"]="terminix apt-transport-https docker-engine docker-compose ca-certificates bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 menulibre"
+  ["tweaks"]="apt-transport-https docker-engine docker-compose ca-certificates bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 menulibre"
   ["browsers"]="opera google-chrome-stable firefox firefox-locale-br"
   ["visual-related"]="faenza-icon-theme compiz compizconfig-settings-manager compiz-core compiz-plugins compiz-plugins-default compiz-plugins-extra compiz-plugins-main compiz-plugins-main-default nvidia-364"
   ["codecs"]="libavcodec-extra libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"

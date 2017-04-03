@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "name": "Otto Kesselgulasch Gimp",
+  "description": "Repositório com pacotes de atualização do programa Gimp",
+  "ppa": "otto-kesselgulasch/gimp",
+  "packages": [
+    "gimp"
+  ]
+}

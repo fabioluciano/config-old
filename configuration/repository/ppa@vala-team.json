@@ -3,6 +3,7 @@
   "name": "Vala Team",
   "description": "Repositório com pacotes necessários para compilar códigos escritos em Vala",
   "ppa": "vala-team/ppa",
+  "key": [],
   "packages": [
     "valac"
   ]

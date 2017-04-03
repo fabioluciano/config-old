@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "name": "LibreOffice Packaging team",
+  "description": "Repositório com atualizações frequentes do editor LibreOffice",
+  "ppa": "libreoffice/ppa",
+  "key": [],
+  "packages": [
+    "valac"
+  ]
+}

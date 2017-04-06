@@ -40,15 +40,7 @@ function render_repositories() {
 
 function show_packages() {
   repositories=("$@")
-
-  dialog \
-    --title "Gerenciador de repositórios e pacotes" \
-    --clear \
-    --stdout \
-    --textbox /dev/stdin 14 100 \
-    --and-widget \
-    --yesno '\nVocê aceita os Termos da Licença?' 8 30 <<< "$(ls -l)"
-
+  
   for repository in "${repositories[@]}"; do
     filename='./configuration/repository/'$(echo $repository | sed 's/\//@/g')'.json'
     repo_content=$(cat $filename)

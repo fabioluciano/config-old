@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "type": "external",
+  "name": "Builtin packages",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "key": [
+    {
+      "type": "url",
+      "key": "https://download.docker.com/linux/ubuntu/gpg"
+    }
+
+  ],
+  "repository": "https://download.docker.com/linux/ubuntu",
+  "packages": [
+    "apt-transport-https",
+    "ca-certificates",
+    "software-properties-common",
+    "docker-ce"
+  ]
+}

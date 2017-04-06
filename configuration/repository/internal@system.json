@@ -1,10 +1,8 @@
 {
   "enabled": true,
-  "type": "ppa",
-  "name": "Builtin packages",
+  "type": "internal",
+  "name": "internal@system",
   "description": "Pacotes que não necessitam de repositórios externos para funcionar",
-  "key": [],
-  "ppa": "internal@builtin",
   "packages": [
     "vim",
     "git",
@@ -15,6 +13,7 @@
     "dia",
     "blender",
     "inkscape",
-    "shutter"
+    "shutter",
+    "menulibre"
   ]
 }

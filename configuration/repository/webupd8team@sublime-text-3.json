@@ -3,7 +3,7 @@
   "type": "ppa",
   "name": " Sublime Text 3 Installer ",
   "description": "Repositório com pacotes necessários para instalação do sublime text 3",
-  "ppa": "webupd8team/sublime-text-3",
+  "repository": "webupd8team/sublime-text-3",
   "key": [],
   "packages": [
     "sublime-text-installer"

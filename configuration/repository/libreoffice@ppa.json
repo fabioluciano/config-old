@@ -1,10 +1,14 @@
 {
   "enabled": true,
+  "type": "ppa",  
   "name": "LibreOffice Packaging team",
   "description": "Repositório com atualizações frequentes do editor LibreOffice",
   "ppa": "libreoffice/ppa",
   "key": [],
   "packages": [
-    "valac"
+    "libreoffice",
+    "libreoffice-l10n-pt-br",
+    "libreoffice-style-sifr",
+    "libreoffice-style-breeze"
   ]
 }

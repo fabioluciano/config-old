@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Builtin packages",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "key": [],
+  "ppa": "internal@builtin",
+  "packages": [
+    "vim",
+    "git",
+    "subversion",
+    "openssh-server",
+    "wireshark",
+    "curl",
+    "dia",
+    "blender",
+    "inkscape",
+    "shutter"
+  ]
+}

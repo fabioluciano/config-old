@@ -7,9 +7,6 @@ diretorio=$(dirname $0)
 command="$1"
 
 ppa=(
-  ["vala"]="vala-team/ppa" #vala
-  ["gimp"]="otto-kesselgulasch/gimp" #gimp
-  ["libreoffice"]="libreoffice/libreoffice" #libreoffice
   ["sublime-text"]="webupd8team/sublime-text-3" #sublime-text
   ["tlp"]="linrunner/tlp" #tpl notebook battery
   ["vlc"]="videolan/stable-daily" #vlc
@@ -47,10 +44,9 @@ external_repository=(
 )
 
 packages=(
-  ["network-tools"]="openssh-server wireshark curl"
   ["sysadmin-tools"]="htop filezilla virtualbox-5.1"
   ["performance-tools"]="preload"
-  ["development-tools"]="valac sublime-text-installer git subversion atom brackets"
+  ["development-tools"]="atom brackets"
   ["databases"]="mysql-client mysql-workbench postgresql pgadmin3"
   ["graphic- tools"]="gimp dia blender inkscape shutter"
   ["tweaks"]="apt-transport-https docker-engine docker-compose ca-certificates bash-completion corebird xfce4-goodies xfce4-messenger-plugin mugshot telegram-purple qbittorrent pcmanfm plank thunar-dropbox-plugin guake oracle-java8-installer oracle-java8-set-default synapse ncurses-term lm-sensors hddtemp tlp tlp-rdw tp-smapi-dkms smartmontools ethtool skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 menulibre"
@@ -59,7 +55,7 @@ packages=(
   ["codecs"]="libavcodec-extra libdvdread4 icedax tagtool ffmpeg easytag id3tool lame libmad0 mpg321 faac faad ffmpeg2theora flac icedax id3v2 lame libflac++6v5 libjpeg-progs mjpegtools mpeg2dec mpeg3-utils mpegdemux mpg123 mpg321 regionset sox uudeview vorbis-tools x264"
   ["multimedia-related"]="flashplugin-installer font-manager vlc audacious ubuntu-restricted-extras clementine camorama minidlna evince"
   ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
-  ["editors"]="vim libreoffice libreoffice-l10n-pt-br libreoffice-style-sifr libreoffice-style-breeze"
+  ["editors"]="vim"
   ["indicators"]="pidgin-indicator touchpad-indicator"
   ["notebook-only"]="laptop-mode-tools"
 )

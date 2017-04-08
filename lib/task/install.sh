@@ -20,7 +20,7 @@ function render_repositories() {
     repo_json_content=$(cat $repository)
 
     if [ "$(echo $repo_json_content | jq '.enabled')" == "true" ]; then
-      repo_name=$(echo $repo_json_content | jq -r '.ppa')
+      repo_name=$(basename $repository | sed 's/\.json//g')
       repo_desc=$(echo $repo_json_content | jq -r '.description')
 
       checklist_options=("${checklist_options[@]}" "$repo_name" "$repo_desc" ON )
@@ -34,22 +34,36 @@ function render_repositories() {
     --checklist "Selecione os repositórios que devem ser ativados" 14 100 10 \
     "${checklist_options[@]}")
 
-  clear;
-  show_packages $selected_repositories
+  install_repository $selected_repositories
 }
 
-function show_packages() {
+function install_repository() {
   repositories=("$@")
-  
-  for repository in "${repositories[@]}"; do
-    filename='./configuration/repository/'$(echo $repository | sed 's/\//@/g')'.json'
-    repo_content=$(cat $filename)
-    packages=$(echo $repo_content | jq -r '.packages[]')
 
-    for package in $packages; do
-      echo $package
-    done
+  for repository in "${repositories[@]}"; do
+    repository_configuration=$( cat './configuration/repository/'$repository'.json')
+    repository_type=$(echo $repository_configuration | jq -r '.type')
+
+    if [ "$repository_type" == "ppa" ]; then
+      source ./lib/task/install/ppa.sh
+    elif [ "$repository_type" == "external" ]; then
+      source ./lib/task/install/external.sh
+    elif [ "$repository_type" == "internal" ]; then
+      source ./lib/task/install/internal.sh
+    elif [ "$repository_type" == "standalone" ]; then
+      source ./lib/task/install/standalone.sh
+    else
+      echo 'Tipo de repositório desconhecido! Arquivo: '$repository
+    fi
+
+    add_repository $repository_configuration
   done
+}
+
+function install_package() {
+  echo $1
+  # repo_content=$(cat $filename)
+  # packages=$(echo $repo_content | jq -r '.packages[]')
 }
 
 function init() {

@@ -8,7 +8,6 @@
       "type": "url",
       "key": "https://download.docker.com/linux/ubuntu/gpg"
     }
-
   ],
   "repository": "https://download.docker.com/linux/ubuntu",
   "packages": [

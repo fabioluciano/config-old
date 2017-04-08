@@ -11,7 +11,7 @@ function render_application_menu() {
 
   case $selected_option in
     1)
-      source ./lib/task/repository_package_management.sh
+      source ./lib/task/install.sh
     ;;
   esac
 

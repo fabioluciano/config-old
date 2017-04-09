@@ -4,9 +4,9 @@ repository_directory='./configuration/repository/'
 
 function check_prerequisites() {
   if [ $(dpkg-query -W -f='${Status}' jq 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
-    gksudo
-      -D 'Atenção!'
-      -m 'Para continuar a execução do aplicação é necessário instalar o programa jq, disponível nos repositórios oficiais do ubuntu. Para prosseguir, digite a seja do usuário corrente e confirme!'
+    gksudo \
+      -D 'Atenção!' \
+      -m 'Para continuar a execução do aplicação é necessário instalar o programa jq, disponível nos repositórios oficiais do ubuntu. Para prosseguir, digite a seja do usuário corrente e confirme!' \
       'apt install -yqq jq'
   fi
 
@@ -28,6 +28,7 @@ function render_repositories() {
   done
 
   selected_repositories=$(dialog \
+    --backtitle "Gerenciador pós-instalação do Xubuntu" \
     --title "Gerenciador de repositórios e pacotes" \
     --clear \
     --stdout \
@@ -58,6 +59,8 @@ function install_repository() {
 
     add_repository $repository_configuration
   done
+
+  sudo apt update --fix-missing
 }
 
 function install_package() {

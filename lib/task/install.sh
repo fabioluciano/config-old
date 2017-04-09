@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 repository_directory='./configuration/repository/'
+packages=""
 
 function check_prerequisites() {
   if [ $(dpkg-query -W -f='${Status}' jq 2>/dev/null | grep -c "ok installed") -eq 0 ]; then
@@ -72,5 +73,3 @@ function install_package() {
 function init() {
   check_prerequisites;
 }
-
-init

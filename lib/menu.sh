@@ -3,7 +3,7 @@
 function render_application_menu() {
   selected_option=$( dialog \
     --stdout \
-    --clear \
+    $default_dialog_options \
     --title 'Adição de repositórios e atualização do sistema.' \
     --menu 'Selecione uma opção.' 0 100 0 \
     1 'Gerenciar repositórios e pacotes'

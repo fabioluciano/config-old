@@ -87,6 +87,8 @@ function add_ppas() {
   for repos in "${ppa[@]}"; do
     echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
     add-apt-repository ppa:$repos -y
+    echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
+    add-apt-repository ppa:$repos -y
   done
 }
 

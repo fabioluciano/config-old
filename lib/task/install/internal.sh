@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
 function add_repository() {
-  $repository=$1
+  repository=$(echo $@ | jq -r '.repository')
   echo $repository
 }

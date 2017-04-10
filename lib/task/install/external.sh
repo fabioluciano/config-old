@@ -20,6 +20,7 @@ function import_external_key_with_url() {
 
 function create_repository_list_file() {
   name=$(echo $@ | jq -rc '.name')
+  name_stripped=$(echo $name | sed 's/\s/\-/g' | tr '[:upper:]' '[:lower:]')
   repository=$(echo $@ | jq -rc '.repository')
   repo_distrib=$(echo $@ | jq -rc '.distribution')
   component=$(echo $@ | jq -rc '.component')
@@ -32,17 +33,9 @@ function create_repository_list_file() {
     component='main'
   fi
 
-  repository_string="deb "
-  repository_string="$repository_string [arch=$architecture_repository] "
-  repository_string="$repository_string $repository "
-  repository_string="$repository_string $repo "
-  repository_string="$repository_string $repo_distrib "
-  repository_string="$repository_string $component "
+  repository_string="deb [arch=$architecture_repository] $repository $repo_distrib $component"
 
-  echo $repository_string
-
-  echo ${name/ /-} | tr '[:upper:]' '[:lower:]'
-  # echo "${external_repository[$chave]}" >> /etc/apt/sources.list.d/$chave.list
+  echo $repository_string >> '/etc/apt/sources.list.d/configtool-'$name_stripped'.list'
 
 }
 

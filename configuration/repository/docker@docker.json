@@ -1,7 +1,7 @@
 {
   "enabled": true,
   "type": "external",
-  "name": "Builtin packages",
+  "name": "Docker official repository",
   "description": "Pacotes que não necessitam de repositórios externos para funcionar",
   "keys": [
     {

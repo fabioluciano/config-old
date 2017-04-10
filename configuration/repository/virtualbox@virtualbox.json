@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "type": "external",
+  "name": "Virtualbox Repository",
+  "description": "Pacotes para instalação dos pacotes do virtualbox",
+  "keys": [
+    {
+      "type": "url",
+      "key": "https://www.virtualbox.org/download/oracle_vbox_2016.asc"
+    },
+    {
+      "type": "url",
+      "key": "https://www.virtualbox.org/download/oracle_vbox.asc"
+    }
+  ],
+  "repository": "http://download.virtualbox.org/virtualbox/debian",
+  "distribution": "teste",
+  "component": "contrib",
+  "packages": [
+    "virtualbox-5.1"
+  ]
+}

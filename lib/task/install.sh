@@ -43,7 +43,7 @@ function install_repository() {
   repositories=("$@")
 
   for repository in "${repositories[@]}"; do
-    repository_configuration=$( cat './configuration/repository/'$repository'.json')
+    repository_configuration=$(cat './configuration/repository/'$repository'.json' | jq -rc '.')
     repository_type=$(echo $repository_configuration | jq -r '.type')
 
     if [ "$repository_type" == "ppa" ]; then
@@ -61,7 +61,7 @@ function install_repository() {
     add_repository $repository_configuration
   done
 
-  sudo apt update --fix-missing
+  # sudo apt update --fix-missing
 }
 
 function install_package() {

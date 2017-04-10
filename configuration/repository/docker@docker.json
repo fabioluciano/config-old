@@ -3,7 +3,7 @@
   "type": "external",
   "name": "Builtin packages",
   "description": "Pacotes que não necessitam de repositórios externos para funcionar",
-  "key": [
+  "keys": [
     {
       "type": "url",
       "key": "https://download.docker.com/linux/ubuntu/gpg"

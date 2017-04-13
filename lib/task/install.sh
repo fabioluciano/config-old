@@ -58,7 +58,7 @@ function install_repository() {
       echo 'Tipo de repositório desconhecido! Arquivo: '$repository
     fi
 
-    add_repository $repository_configuration
+    # add_repository $repository_configuration
     collect_packages $repository_configuration
   done
 
@@ -67,7 +67,7 @@ function install_repository() {
 }
 
 function install_package_collection() {
-  apt install $packages
+  echo apt install $packages
 }
 
 function collect_packages() {

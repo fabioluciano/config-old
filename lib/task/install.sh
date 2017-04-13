@@ -8,7 +8,7 @@ function check_prerequisites() {
     gksudo \
       -D 'Atenção!' \
       -m 'Para continuar a execução do aplicação é necessário instalar o programa jq, disponível nos repositórios oficiais do ubuntu. Para prosseguir, digite a seja do usuário corrente e confirme!' \
-      'apt install -yqq jq'
+      'apt install -yqq jq apt-transport-https'
   fi
 
   render_repositories

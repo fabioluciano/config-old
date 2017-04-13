@@ -8,7 +8,7 @@ function import_external_key_with_url() {
     key_content=$(echo $key| jq -rc '.key')
 
     if [ "$key_type" == "url" ]; then
-      echo 'curl -fsSL '$key_content' | sudo apt-key add -'
+      curl -fsSL $key_content | sudo apt-key add -
     elif [ "$key_type" == "string" ]; then
       echo $key_type
     else
@@ -33,7 +33,7 @@ function create_repository_list_file() {
 
   repository_string="deb [arch=$architecture_repository] $repository $repo_distrib $component"
 
-  echo $repository_string >> '/etc/apt/sources.list.d/configtool-'$name_stripped'.list'
+  echo $repository_string > '/etc/apt/sources.list.d/configtool-'$name_stripped'.list'
 
 }
 

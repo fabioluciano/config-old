@@ -62,12 +62,12 @@ function install_repository() {
     collect_packages $repository_configuration
   done
 
-  sudo apt update --fix-missing
-  install_package_collection() $packages
+  apt update --fix-missing
+  install_package_collection $packages
 }
 
 function install_package_collection() {
-  sudo apt install $packages
+  apt install $packages
 }
 
 function collect_packages() {

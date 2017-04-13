@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Proprietary GPU Drivers ",
+  "description": "Repositório com pacotes de atualização de drivers de placas gráficas",
+  "repository": "graphics-drivers/ppa",
+  "key": [],
+  "packages": [
+    "nvidia-graphics-drivers-381",
+    "nvidia-settings"
+  ]
+}

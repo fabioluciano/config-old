@@ -6,7 +6,7 @@
   "repository": "graphics-drivers/ppa",
   "key": [],
   "packages": [
-    "nvidia-graphics-drivers-381",
+    "nvidia-381",
     "nvidia-settings"
   ]
 }

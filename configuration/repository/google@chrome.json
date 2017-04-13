@@ -10,6 +10,7 @@
     }
   ],
   "repository": "http://dl.google.com/linux/chrome/deb/",
+  "component": "stable",
   "packages": [
     "google-chrome-stable"
   ]

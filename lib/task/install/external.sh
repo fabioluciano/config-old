@@ -14,8 +14,8 @@ function import_external_key_with_url() {
     else
       echo 'Tipo de chave desconhecida!'
     fi
-
   done
+
 }
 
 function create_repository_list_file() {

@@ -59,15 +59,23 @@ function install_repository() {
     fi
 
     add_repository $repository_configuration
+    collect_packages $repository_configuration
   done
 
-  # sudo apt update --fix-missing
+  sudo apt update --fix-missing
+  install_package_collection() $packages
 }
 
-function install_package() {
-  echo $1
-  # repo_content=$(cat $filename)
-  # packages=$(echo $repo_content | jq -r '.packages[]')
+function install_package_collection() {
+  sudo apt install $packages
+}
+
+function collect_packages() {
+  packages_collection=($(echo $@ | jq -rc '. | .packages[]'))
+
+  for package in "${packages_collection[@]}"; do
+    packages="$packages $package"
+  done
 }
 
 function init() {

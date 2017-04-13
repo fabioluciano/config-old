@@ -27,9 +27,7 @@ function create_repository_list_file() {
 
   if [ "$repo_distrib" == "null" ]; then
     repo_distrib=$distribution
-  fi
-
-  if [ "$component" == "null" ]; then
+  elif [ "$component" == "null" ]; then
     component='main'
   fi
 

@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "atareao-team",
+  "description": "Repositório com pacotes necessários para instalação do atom",
+  "repository": "atareao/atareao",
+  "key": [],
+  "packages": [
+    "touchpad-indicator"
+  ]
+}

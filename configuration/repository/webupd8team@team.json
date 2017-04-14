@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Atom text editor",
+  "description": "Repositório com pacotes necessários para instalação do atom",
+  "repository": "webupd8team/atom",
+  "key": [],
+  "packages": [
+    "atom"
+  ]
+}

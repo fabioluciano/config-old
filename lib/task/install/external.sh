@@ -19,7 +19,7 @@ function import_external_key_with_url() {
 }
 
 function create_repository_list_file() {
-  name=$(echo $@ | jq -rc '.name')
+  name=$(echo $@ | jq - rc '.name')
   name_stripped=$(echo $name | sed 's/\s/\-/g' | tr '[:upper:]' '[:lower:]')
   repository=$(echo $@ | jq -rc '.repository')
   repo_distrib=$(echo $@ | jq -rc '.distribution')

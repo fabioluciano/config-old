@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Atom text editor",
+  "description": "Repositório com pacotes necessários para instalação do sublime text 3",
+  "repository": "webupd8team/sublime-text-3",
+  "key": [],
+  "packages": [
+    "sublime-text-installer"
+  ]
+}

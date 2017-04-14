@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Corebird official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "ubuntuhandbook1/corebird",
+  "key": [],
+  "packages": [
+    "corebird"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "enabled": false,
+  "type": "ppa",
+  "name": "Plank official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "docky-core/stable",
+  "key": [],
+  "packages": [
+    "plank"
+  ]
+}

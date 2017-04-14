@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "vlc official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "videolan/master-daily",
+  "key": [],
+  "packages": [
+    "vlc"
+  ]
+}

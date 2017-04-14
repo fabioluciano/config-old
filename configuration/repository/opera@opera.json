@@ -1,5 +1,5 @@
 {
-  "enabled": true,
+  "enabled": false,
   "type": "external",
   "name": "Opera official package",
   "description": "Repositório com pacotes necessários para instalar o opera",

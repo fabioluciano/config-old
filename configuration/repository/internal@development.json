@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "type": "internal",
+  "name": "internal@development",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "packages": [
+    "mysql-workbench",
+    "pgadmin3"
+  ]
+}

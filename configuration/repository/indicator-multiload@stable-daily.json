@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Multiload indicator repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "indicator-multiload/stable-daily",
+  "key": [],
+  "packages": [
+    "indicator-multiload"
+  ]
+}

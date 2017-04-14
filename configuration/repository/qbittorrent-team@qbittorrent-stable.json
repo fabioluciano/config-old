@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "qbittorrent-team official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "qbittorrent-team/qbittorrent-stable",
+  "key": [],
+  "packages": [
+    "qbittorrent"
+  ]
+}

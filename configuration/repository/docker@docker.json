@@ -1,12 +1,12 @@
 {
-  "enabled": true,
+  "enabled": false,
   "type": "external",
   "name": "Docker official repository",
   "description": "Pacotes que não necessitam de repositórios externos para funcionar",
   "keys": [
     {
-      "type": "url",
-      "key": "https://download.docker.com/linux/ubuntu/gpg"
+      "type": "keyserver",
+      "key": "D2C19886"
     }
   ],
   "repository": "https://download.docker.com/linux/ubuntu",

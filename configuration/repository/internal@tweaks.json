@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "type": "internal",
+  "name": "internal@development",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "packages": [
+    "faenza-icon-theme",
+    "compiz",
+    "compizconfig-settings-manager",
+    "compiz-core",
+    "compiz-plugins",
+    "compiz-plugins-default",
+    "compiz-plugins-extra",
+    "compiz-plugins-main",
+    "compiz-plugins-main-default"
+    ]
+  }

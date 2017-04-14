@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "indicator-sound-switcher official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "yktooo/ppa",
+  "key": [],
+  "packages": [
+    "indicator-sound-switcher"
+  ]
+}

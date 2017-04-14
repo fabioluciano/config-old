@@ -1,0 +1,17 @@
+{
+  "enabled": true,
+  "type": "external",
+  "name": " Skype Official repository",
+  "description": "Repositório dos pacotes oficiais do skype",
+  "keys": [
+    {
+      "type": "url",
+      "key": "https://repo.skype.com/data/SKYPE-GPG-KEY"
+    }
+  ],
+  "repository": "https://repo.skype.com/deb",
+  "distribution": "stable",
+  "packages": [
+    "skypeforlinux"
+  ]
+}

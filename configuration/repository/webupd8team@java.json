@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Proprietary GPU Drivers ",
+  "description": "Java",
+  "repository": "webupd8team/java",
+  "key": [],
+  "packages": [
+    "oracle-java9-installer",
+    "oracle-java9-set-default"
+  ]
+}
+

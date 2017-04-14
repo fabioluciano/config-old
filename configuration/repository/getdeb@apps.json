@@ -1,0 +1,18 @@
+{
+  "enabled": false,
+  "type": "external",
+  "name": "Getdeb official repository",
+  "description": "Getdeb packages",
+  "keys": [
+    {
+      "type": "url",
+      "key": "http://archive.getdeb.net/getdeb-archive.key"
+    }
+  ],
+  "repository": "http://archive.getdeb.net/ubuntu",
+  "distribution": "zesty-getdeb",
+  "component": "apps",
+  "packages": [
+    "google-chrome-stable"
+  ]
+}

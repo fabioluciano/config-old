@@ -1,0 +1,12 @@
+{
+  "enabled": true,
+  "type": "external",
+  "name": "Canonical Partner repository",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "keys": [ ],
+  "repository": "http://archive.canonical.com/ubuntu/",
+  "component": "partner",
+  "packages": [
+    "adobe-flashplugin"
+  ]
+}

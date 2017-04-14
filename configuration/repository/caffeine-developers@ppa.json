@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "caffeine",
+  "description": "Repositório com pacotes genericos",
+  "repository": "caffeine-developers/ppa",
+  "packages": [
+    "caffeine"
+  ]
+}

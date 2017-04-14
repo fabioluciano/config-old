@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Xubuntu extras official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "xubuntu-dev/extra",
+  "key": [],
+  "packages": [
+    "xfdashboard"
+  ]
+}

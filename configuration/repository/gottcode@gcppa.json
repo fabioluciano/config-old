@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "whisker menu official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "gottcode/gcppa",
+  "key": [],
+  "packages": [
+    "xfce4-whiskermenu-plugin"
+  ]
+}

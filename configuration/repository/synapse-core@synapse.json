@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "synapse-core official",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "synapse-core/testing",
+  "key": [],
+  "packages": [
+    "synapse"
+  ]
+}

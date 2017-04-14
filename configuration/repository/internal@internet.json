@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "type": "internal",
+  "name": "internal@internet",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "packages": [
+    "firefox",
+    "firefox-locale-br",
+    "corebird",
+    "telegram-purple",
+    "pidgin",
+    "pidgin-indicator"
+  ]
+}

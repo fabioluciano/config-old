@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "type": "external",
+  "name": "spotify official repository",
+  "description": "Pacotes do spotify",
+  "keys": [
+    {
+      "type": "hash",
+      "key": "D2C19886"
+    }
+  ],
+  "repository": "http://repository.spotify.com",
+  "distribution": "stable",
+  "component": "non-free",
+  "packages": [
+    "spotify-client"
+  ]
+}

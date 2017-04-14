@@ -1,0 +1,13 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Webup8 official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "nilarimogard/webupd8",
+  "key": [],
+  "packages": [
+    "indicator-multiload",
+    "telegram-purple",
+    "guake"
+  ]
+}

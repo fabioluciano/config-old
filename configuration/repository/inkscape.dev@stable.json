@@ -1,0 +1,11 @@
+{
+  "enabled": false,
+  "type": "ppa",
+  "name": "Inkscape official repository",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "inkscape.dev/stable",
+  "key": [],
+  "packages": [
+    "inkscape"
+  ]
+}

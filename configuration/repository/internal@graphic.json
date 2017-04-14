@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "internal",
+  "name": "internal@graphic",
+  "description": "Pacotes que não necessitam de repositórios externos para funcionar",
+  "packages": [
+    "dia",
+    "blender",
+    "shutter"
+  ]
+}

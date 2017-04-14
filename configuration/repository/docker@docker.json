@@ -10,6 +10,7 @@
     }
   ],
   "repository": "https://download.docker.com/linux/ubuntu",
+  "component": "stable",
   "packages": [
     "apt-transport-https",
     "ca-certificates",

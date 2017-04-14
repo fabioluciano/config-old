@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "papirus",
+  "description": "Repositório com pacotes necessários para instalar o tema papirus",
+  "repository": "papirus/papirus",
+  "packages": [
+    "papirus-icon-theme",
+    "libreoffice-style-papirus"
+  ]
+}

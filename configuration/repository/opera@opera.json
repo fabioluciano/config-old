@@ -1,0 +1,18 @@
+{
+  "enabled": true,
+  "type": "external",
+  "name": "Opera official package",
+  "description": "Repositório com pacotes necessários para instalar o opera",
+  "keys": [
+    {
+      "type": "url",
+      "key": "https://deb.opera.com/archive.key"
+    }
+  ],
+  "repository": "https://deb.opera.com/opera-stable/",
+  "distribution": "stable",
+  "component": "non-free",
+  "packages": [
+    "opera"
+  ]
+}

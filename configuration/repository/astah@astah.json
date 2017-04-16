@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "type": "standalone",
+  "name": "astah",
+  "description": "Repositório com pacotes genéricos",
+  "repository": "http://astah.net/download",
+  "regex": "<p class=\"linux prorpm.*?href=\"\\K(?<link>.*?.deb)\""
+}

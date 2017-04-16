@@ -6,12 +6,20 @@ function render_application_menu() {
     --stdout \
     --title 'Adição de repositórios e atualização do sistema.' \
     --menu 'Selecione uma opção.' 0 100 0 \
-    1 'Gerenciar repositórios e pacotes'
+    software 'Gerenciar repositórios e pacotes' \
+    configure 'Configurar sistema e aplicativos' \
+    clean 'Limpar sistema'
   )
 
   case $selected_option in
-    1)
+    software)
       source ./lib/task/install.sh
+    ;;
+    configure)
+      source ./lib/task/configure.sh
+    ;;
+    clean)
+      source ./lib/task/configure.sh
     ;;
   esac
 

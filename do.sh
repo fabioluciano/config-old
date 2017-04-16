@@ -9,6 +9,8 @@ command="$1"
 
 packages=(
   ["archiver"]="arj p7zip p7zip-full p7zip-rar unrar unace-nonfree p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller"
+  ["indicators"]="pidgin-indicator"
+  ["notebook-only"]="laptop-mode-tools"
 )
 
 # Pacotes a serem removidos
@@ -20,6 +22,55 @@ startup_apps=( guake plank )
 
 # Lista de daemons para não serem executados no startup
 daemons=( apache2 nginx mysql postgresql mongodb minidlna php7.0-fpm )
+
+function init() {
+  case $command in
+    addppa)
+    echo -e "\nAdicionando PPAs";
+    add_ppas;
+    add_external_keys;
+    ;;
+    *)
+    show_menu;
+    exit 1;
+  esac
+}
+
+function add_ppas() {
+  for repos in "${ppa[@]}"; do
+    echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
+    add-apt-repository ppa:$repos -y
+    echo -e " \033[32m-\033[0m ppa\t\033[32m$repos\033[0m";
+    add-apt-repository ppa:$repos -y
+  done
+}
+
+function add_external_keys() {
+  echo -e "\nAdicionando Repositórios externos";
+
+  for chave in ${!external_repository[@]}; do
+    echo -e " \033[32m-\033[0m key\t\033[32m$chave\033[0m";
+
+    if [ -n "${external_repository_keys[$chave]}" ]; then
+      wget -q -O - ${external_repository_keys[$chave]} | apt-key add -
+    fi
+
+    if [ ! -s "/etc/apt/sources.list.d/$chave.list" ]; then
+      echo "${external_repository[$chave]}" >> /etc/apt/sources.list.d/$chave.list
+    fi
+  done
+
+  apt update --fix-missing
+}
+
+function add_packages() {
+  echo -e "\nAdicionando pacotes";
+
+  for pkg in "${packages[@]}"; do
+    echo -e " \033[32m-\033[0m pkgs\t\033[32m$pkg\033[0m";
+    apt install $pkg --allow-unauthenticated -y
+  done
+}
 
 function purge_packages() {
   for pkg in "${packages_purge[@]}"; do
@@ -44,9 +95,9 @@ function do_fixes() {
   gsettings set org.gnome.desktop.wm.preferences theme Greybird
   gsettings set org.gnome.desktop.interface buttons-have-icons true
   gsettings set org.gnome.desktop.wm.preferences titlebar-uses-system-font false
-  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Droid Bold 9'
+  gsettings set org.gnome.desktop.wm.preferences titlebar-font 'Noto Sans Bold 9'
   gconftool-2 --set --type string /desktop/gnome/interface/gtk_theme greybird
-  gconftool-2 --set --type string /desktop/gnome/interface/icon_theme Faenza-Dar
+  gconftool-2 --set --type string /desktop/gnome/interface/icon_theme Faenza-Dark
 
   # detecta os sensores de temperatura
   sensors-detect

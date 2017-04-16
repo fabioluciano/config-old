@@ -2,5 +2,4 @@
 
 function add_repository() {
   repository=$(echo $@ | jq -r '.repository')
-  # echo $repository
 }

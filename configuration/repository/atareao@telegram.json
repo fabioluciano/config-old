@@ -1,0 +1,11 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "Telegram Desktiop PPA",
+  "description": "Repositório com pacotes referentes ao telegramdesktop",
+  "repository": "atareao/telegram",
+  "key": [],
+  "packages": [
+    "telegram"
+  ]
+}

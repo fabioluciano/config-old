@@ -46,25 +46,18 @@ function install_repository() {
     repository_configuration=$(cat './configuration/repository/'$repository'.json' | jq -rc '.')
     repository_type=$(echo $repository_configuration | jq -r '.type')
 
-    # echo $repository
 
     if [ "$repository_type" == "ppa" ]; then
-      echo
-      # source ./lib/task/install/ppa.sh
+      source ./lib/task/install/ppa.sh
     elif [ "$repository_type" == "external" ]; then
-      echo
-      # source ./lib/task/install/external.sh
+      source ./lib/task/install/external.sh
     elif [ "$repository_type" == "standalone" ]; then
-      echo $repository
-
       source ./lib/task/install/standalone.sh
-      add_repository $repository_configuration
     elif [ "$repository_type" == "internal" ]; then
-      echo
-      #source ./lib/task/install/internal.sh
+      source ./lib/task/install/internal.sh
     fi
 
-    # add_repository $repository_configuration
+    add_repository $repository_configuration
     collect_packages $repository_configuration
   done
 
@@ -79,11 +72,9 @@ function install_package_collection() {
 function collect_packages() {
   packages_collection=($(echo $@ | jq -rc '. | .packages[]?'))
 
-  if [ "$packages_collection" == "null" ]; then
     for package in "${packages_collection[@]}"; do
       packages="$packages $package"
     done
-  fi
 }
 
 function init() {

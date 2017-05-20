@@ -60,6 +60,8 @@
     "mpack",
     "arj",
     "cabextract",
-    "file-roller"
+    "file-roller",
+    "ttf-ancient-fonts",
+    "fonts-ancient-scripts"
   ]
 }

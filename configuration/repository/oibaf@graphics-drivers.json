@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "type": "ppa",
+  "name": "oibaf graphics-drivers",
+  "description": "Repositório com pacotes necessários para compilar códigos escritos em Vala",
+  "repository": "oibaf/graphics-drivers",
+  "packages": [
+  ]
+}

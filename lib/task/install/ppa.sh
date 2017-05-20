@@ -2,5 +2,5 @@
 
 function add_repository() {
   repository=$(echo $@ | jq -r '.repository')
-  sudo add-apt-repository ppa:$repository -y
+  echo sudo add-apt-repository ppa:$repository -y
 }

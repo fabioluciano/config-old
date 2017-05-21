@@ -1,0 +1,10 @@
+{
+  "docs_mount" : "/mnt/doc/",
+  "docs_folders": [
+    "document",
+    "download",
+    "image",
+    "music",
+    "study"
+  ]
+}

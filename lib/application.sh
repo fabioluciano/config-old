@@ -6,6 +6,8 @@ function func_architecture_string() {
   fi
 }
 
+export current_user=$SUDO_USER
+export application_config=$(cat './configuration/application.json' | jq -rc '.')
 export architecture=$(getconf LONG_BIT)
 export distribution=$(lsb_release -cs)
 export architecture_repository=$(func_architecture_string)

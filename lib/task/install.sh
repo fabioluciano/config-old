@@ -57,7 +57,7 @@ function install_repository() {
       source ./lib/task/install/internal.sh
     fi
 
-    add_repository $repository_configuration
+    #add_repository $repository_configuration
     collect_packages $repository_configuration
   done
 
@@ -72,9 +72,9 @@ function install_package_collection() {
 function collect_packages() {
   packages_collection=($(echo $@ | jq -rc '. | .packages[]?'))
 
-    for package in "${packages_collection[@]}"; do
-      packages="$packages $package"
-    done
+  for package in "${packages_collection[@]}"; do
+    packages="$packages $package"
+  done
 }
 
 function init() {

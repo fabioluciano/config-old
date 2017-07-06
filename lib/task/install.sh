@@ -57,7 +57,7 @@ function install_repository() {
       source ./lib/task/install/internal.sh
     fi
 
-    #add_repository $repository_configuration
+    add_repository $repository_configuration
     collect_packages $repository_configuration
   done
 
